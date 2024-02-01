@@ -4,30 +4,33 @@
 #include <iostream>
 #include <unordered_map>
 
-std::string space = "                     ";
-void inBanCo(char tableData[9][9], int width, int height) {
+
+void inBanCo(char tableData[9][9], int width, int height, int x) {
+    std::string space {};
+    for (int i = 0 ;i < x; i++ ) space += " ";
     std::cout << space + "      ";
+
     for (int i = 1; i <= width; i++) {
-        std::cout << i << "   ";
+        std::cout << i << "   "; // 1   2   3   4 ....
     }
     std::cout << "\n";
-    for (int i = 0; i <= height + 1; i++) {
+    for (int i = 0; i <= height; i++) {
         std::cout << space << "    ";
         for (int o = 0; o <= width; o++) {
-            if (o == 0) {  std::cout << "+"; }
+            if (o == 0) {  std::cout << "+"; } // "+" + (2)
             else {
-                std::cout << "---+";
+                std::cout << "---+"; // (2): ----+----+----+...
             }
         }
         std::cout << "\n";
-        if (i != height + 1) {
-            std::cout << space + "  " << i+1 << " ";
+        if (i != height) {
+            std::cout << space + "  " << i+1 << " "; // 1 |; 2 |; ..|
             for (int j = 0; j < width; j++) {
                 if (tableData[i][j] == 'X' || tableData[i][j] == 'O'){  std::cout << "| " << tableData[i][j] << " ";} else {
                     std::cout << "|   ";
-                }
+                } // (1): | .. | .. | .. | ...
             }
-            std::cout << "|";
+            std::cout << "|"; // (1) + "|"; -> | .. | .. | .. |
         }
 
         std::cout << "\n";

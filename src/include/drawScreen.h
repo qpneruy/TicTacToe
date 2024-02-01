@@ -7,6 +7,6 @@
 
 #include <string>
 
-void inBanCo(char tableData[9][9], int width, int height);
+void inBanCo(char tableData[9][9], int width, int height, int x);
 void inMenu();
 #endif //TICTACTOEV2_DRAWSCREEN_H

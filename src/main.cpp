@@ -2,13 +2,14 @@
 #include <windows.h>
 #include "include/drawScreen.h"
 using namespace std;
-struct PlayerPos {
+struct Player {
     int PosX;
     int PosY;
+    int score;
 };
 struct Data {
-    PlayerPos XPLayer;
-    PlayerPos OPLayer;
+    Player XPLayer;
+    Player OPLayer;
     int intWin;
 
 };
@@ -36,23 +37,57 @@ bool HorVerCheck(Data Data, char table[9][9], int width, int height, char Player
     }
     return false;
 }
-
+void gotoXY(int x, int y) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD CursorPosition;
+    CursorPosition.X = x;
+    CursorPosition.Y = y;
+    SetConsoleCursorPosition(hConsole, CursorPosition);
+}
+void clearScreen() {
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD coord = {
+            0,
+            0
+    };
+    DWORD count;
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(hStdOut, & csbi);
+    FillConsoleOutputCharacter(hStdOut, ' ', csbi.dwSize.X * csbi.dwSize.Y, coord, & count);
+    SetConsoleCursorPosition(hStdOut, coord);
+}
+void inBangDiem(Data data, int x){
+    string line1 = "      |";
+    string line2 = "      |";
+    if (data.XPLayer.score < 10) line1 = " " + line1;
+    if (data.OPLayer.score < 10) line2 = " " + line2;
+    gotoXY(x, 1);
+    cout << " ______________";
+    gotoXY(x, 2);
+    cout << "/     DIEM     \\";
+    gotoXY(x, 3);
+    cout << "+----+---------+";
+    gotoXY(x, 4);
+    cout << "| X: | " << data.XPLayer.score << line1;
+    gotoXY(x, 5);
+    cout << "+----+---------+";
+    gotoXY(x, 6);
+    cout << "| O: | " <<  data.OPLayer.score << line2;
+    gotoXY(x, 7);
+    cout << "+----+---------+";
+}
 int main() {
-    Data Data;
     char a[9][9] = {};
-    a[5-1][9-1] = 'X';
-    a[5-1][8-1] = 'X';
-    a[5-1][7-1] = 'X';
-    a[5-1][6-1] = 'O';
 
-    a[9-1][5-1] = 'X';
-    a[8-1][5-1] = 'X';
-    a[7-1][5-1] = 'X';
-    a[6-1][5-1] = 'O';
-    inBanCo(a, 9, 8);
-//    Data.intWin = 4;
-//    cout << " >>>" << HorVerCheck(Data, a, 9, 8, 'X') << " <<";
-
+    Data Data;
+    int x, y, z;
+    SetWindowSize(80, 35);
+    while (cin >> x >> y) {
+        clearScreen();
+        inBanCo(a, x, y, 40-(x * 4 / 2)-5);
+        inBangDiem(Data, 40+(x * 4 / 2)+6);
+        gotoXY(0, 0);
+    }
     std::cin.get();
     return 0;
 }
