@@ -3,9 +3,11 @@
 //
 #include <iostream>
 #include <unordered_map>
+#include <windows.h>
 
 
-void inBanCo(char tableData[9][9], int width, int height, int x) {
+void inBanCo(char tableData[9][9], int width, int height, int x, int y) {
+    gotoXY(0, y);
     std::string space {};
     for (int i = 0 ;i < x; i++ ) space += " ";
     std::cout << space + "      ";
