@@ -15,7 +15,8 @@ using namespace std;
 const int baseX = 0;
 const int baseY = 8;
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-const  char ch[2] = {30,31};
+const char ch[2] = {30, 31};
+
 /*{--------------------------------------------}*/
 void gotoXY(int x, int y) {
     COORD CursorPosition;
@@ -23,6 +24,7 @@ void gotoXY(int x, int y) {
     CursorPosition.Y = y;
     SetConsoleCursorPosition(hConsole, CursorPosition);
 }
+
 /*{--------------------------------------------}
  int wherex() {
    CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -54,15 +56,17 @@ void clearScreen() {
     };
     DWORD count;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(hStdOut, & csbi);
-    FillConsoleOutputCharacter(hStdOut, ' ', csbi.dwSize.X * csbi.dwSize.Y, coord, & count);
+    GetConsoleScreenBufferInfo(hStdOut, &csbi);
+    FillConsoleOutputCharacter(hStdOut, ' ', csbi.dwSize.X * csbi.dwSize.Y, coord, &count);
     SetConsoleCursorPosition(hStdOut, coord);
 }
+
 struct ToadoXY {
     int PosX;
     int PosY;
 };
-void GetPosMouse(ToadoXY & pos) {
+
+void GetPosMouse(ToadoXY &pos) {
     int x, y;
     bool Pressed = false;
     HANDLE hStdin;
@@ -74,8 +78,8 @@ void GetPosMouse(ToadoXY & pos) {
     fdwMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT;
     SetConsoleMode(hStdin, fdwMode);
     while (!Pressed) {
-        PeekConsoleInput(hStdin, & Inrec, 1, & eventRead);
-        ReadConsoleInput(hStdin, & Inrec, 1, & eventRead);
+        PeekConsoleInput(hStdin, &Inrec, 1, &eventRead);
+        ReadConsoleInput(hStdin, &Inrec, 1, &eventRead);
         x = Inrec.Event.MouseEvent.dwMousePosition.X;
         y = Inrec.Event.MouseEvent.dwMousePosition.Y;
         switch (Inrec.EventType) {
@@ -91,13 +95,15 @@ void GetPosMouse(ToadoXY & pos) {
         }
     }
 }
+
 /*{--------------------------------------------}*/
 struct XYMap {
     int MapY[99], MapX[99];
 };
 const int posXinc = 4;
 const int posYinc = 2;
-void Mapping(int x, int y, XYMap & Map) {
+
+void Mapping(int x, int y, XYMap &Map) {
     int posX = 0, posY = 1;
     for (int i = 0; i < x; ++i) {
         posX = posXinc * i + 4;
@@ -108,6 +114,7 @@ void Mapping(int x, int y, XYMap & Map) {
         Map.MapY[i] = posY;
     }
 }
+
 /*{--------------------------------------------}*/
 int SlectionSortF(int a[], int n, int x) {
     a[n] = a[n - 1] + 1;
@@ -128,6 +135,7 @@ int SlectionSortF(int a[], int n, int x) {
     }
     return -1;
 }
+
 /*{--------------------------------------------}*/
 int binarySearch(int arr[], int l, int r, int x, int ktl) {
     int tsDC;
@@ -151,8 +159,9 @@ int binarySearch(int arr[], int l, int r, int x, int ktl) {
     }
     return -1;
 }
+
 /*{--------------------------------------------}*/
-void DacPos(int x, int y, int xNew, int yNew, ToadoXY & XYpos, XYMap & Map) {
+void DacPos(int x, int y, int xNew, int yNew, ToadoXY &XYpos, XYMap &Map) {
     XYpos.PosX = binarySearch(Map.MapX, 0, x, xNew, 0);
     XYpos.PosY = binarySearch(Map.MapY, 0, y, yNew, 1);
 }
@@ -207,6 +216,7 @@ void inBanCo(char a[100][100], int x, int y) {
     }
     cout << endl;
 }
+
 /*{--------------------------------------------------------------------}*/
 bool CheoPhaiCheck(char a[100][100], int x, int y, int DKwin, char tsDC) {
     int l = 0, cnt = 0, tsCC, tsCR;
@@ -239,6 +249,7 @@ bool CheoPhaiCheck(char a[100][100], int x, int y, int DKwin, char tsDC) {
     }
     return false;
 }
+
 /*{--------------------------------------------}*/
 bool HoaCheck(char a[100][100], int x, int y) {
     int Cnt = 0;
@@ -254,6 +265,7 @@ bool HoaCheck(char a[100][100], int x, int y) {
     }
     return false;
 }
+
 /*{--------------------------------------------------------------}*/
 bool DocCheck(char a[100][100], int x, int y, int DKwin, char tsDC) {
     int count = 0;
@@ -272,6 +284,7 @@ bool DocCheck(char a[100][100], int x, int y, int DKwin, char tsDC) {
     }
     return false;
 }
+
 /*{----------------------------------------------------------------}*/
 bool NgangCheck(char a[100][100], int x, int y, int DKwin, char tsDC) {
     int count = 0;
@@ -289,6 +302,7 @@ bool NgangCheck(char a[100][100], int x, int y, int DKwin, char tsDC) {
     }
     return false;
 }
+
 /*{-----------------------------------------------------------}*/
 int isWin(char a[100][100], int x, int y, int Dkwin, char ktl) {
     char d[100][100] = {};
@@ -317,6 +331,7 @@ int isWin(char a[100][100], int x, int y, int Dkwin, char ktl) {
     //cout << "Ham iswin return ve 0";
     return 0;
 }
+
 /*{-----------------------}*/
 char Key() {
     bool event = false;
@@ -328,6 +343,7 @@ char Key() {
     }
     return 0;
 }
+
 /*{------------------------}*/
 bool SystaxCheck(char ktl, int x, int y, int yarr, int xarr, char a[100][100]) {
     if (yarr == -1 || xarr == -1) {
@@ -354,6 +370,7 @@ bool SystaxCheck(char ktl, int x, int y, int yarr, int xarr, char a[100][100]) {
     cout << "                                                ";
     return false;
 }
+
 /*{------------------------------------------------------------------------}*/
 const string mainMenuArr[5] = {
         "[1]-Choi",
@@ -366,10 +383,13 @@ string settingMenuArr[3] = {
         "[2]-Sound: [OFF]",
 };
 bool KbCoord = false;
+
 void showMenu(const string arr[], int size, int y) {
     for (int i = 0; i < size; i++) {
         if (i == y) {
-            SetConsoleTextAttribute(hConsole,   FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            SetConsoleTextAttribute(hConsole,
+                                    FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                    BACKGROUND_BLUE | BACKGROUND_INTENSITY);
             cout << arr[i] << endl;
         } else {
             SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -380,18 +400,19 @@ void showMenu(const string arr[], int size, int y) {
 
 void updateMenu(const string arr[], int old_y, int new_y, int ktl) {
     int y, y_2;
-    if (ktl == 1){
+    if (ktl == 1) {
         y = old_y;
         y_2 = new_y;
-    } else if (ktl == 0){
-        y = old_y+8;
-        y_2 = new_y+8;
+    } else if (ktl == 0) {
+        y = old_y + 8;
+        y_2 = new_y + 8;
     }
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     // gotoXY(arr[old_y].length() + 1, old_y + 8);
     gotoXY(0, y);
     cout << arr[old_y];
-    SetConsoleTextAttribute(hConsole,   FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                      BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     // gotoXY(arr[new_y].length() + 1, new_y + 8);
     gotoXY(0, y_2);
     cout << arr[new_y];
@@ -409,7 +430,7 @@ int getMenuSelection(const string arr[], int size, int ktl) {
     char ch;
     int y = 0, tsDC = 0;
     if (ktl == 1) {
-        gotoXY(0,0);
+        gotoXY(0, 0);
         showMenu(arr, size, y);
         tsDC = KEY_ESC;
     } else if (ktl == 0) {
@@ -451,6 +472,7 @@ int getMenuSelection(const string arr[], int size, int ktl) {
     }
     return y;
 }
+
 /*{----------------------------------------------}*/
 int SlectionSys() {
     gotoXY(baseX, baseY);
@@ -466,8 +488,9 @@ int SlectionSys() {
     }
     return -1;
 }
+
 /*{------------------------------------------------------}*/
-int LoadGame(ToadoXY & xyPOS, XYMap & Map) {
+int LoadGame(ToadoXY &xyPOS, XYMap &Map) {
     int chon, Win, Xwin = 0, Owin = 0;
     int luotX = 0, luotO = 0;
     bool opl = false, xpl = false, flagX = true, flagO = true;
@@ -504,7 +527,7 @@ int LoadGame(ToadoXY & xyPOS, XYMap & Map) {
             pl = 'X';
             flags = false;
         } else if (Key() == '2') {
-            opl= true;
+            opl = true;
             pl = 'O';
             flags = false;
         } else {
@@ -636,7 +659,7 @@ int LoadGame(ToadoXY & xyPOS, XYMap & Map) {
             inBanCo(a, x, y);
             cout << "Ca 2 Hoa" << endl;
             cout << "Ban Co Muon Choi Lai Khong?" << endl;
-            cout << "y-[Co]            n-[NO]"<< endl;
+            cout << "y-[Co]            n-[NO]" << endl;
             //   cout << "Nhan Phim [ESC] De quay lai menu.";
             if (Key() == 'y') {
                 luotX = 0;
@@ -668,7 +691,7 @@ int main(void) {
     bool event = false;
     bool win = true;
     while (win) {
-        gotoXY(0,0);
+        gotoXY(0, 0);
         clearScreen();
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         cout << "------------------[Bien The Co CARO]--------------------" << endl;
@@ -678,8 +701,8 @@ int main(void) {
         cout << "*        //   //      //     //  //  ////  //   //     *" << endl;
         cout << "*       //   //  //  //     //  //   ///  //   //      *" << endl;
         cout << "--------------------------------------------------------" << endl;
-        gotoXY(baseX, baseY+5);
-        cout << ch[0] << "/" << ch[1] << " De Chon  " << "|  ENTER - De xac nhan" ;
+        gotoXY(baseX, baseY + 5);
+        cout << ch[0] << "/" << ch[1] << " De Chon  " << "|  ENTER - De xac nhan";
 
         int chon = SlectionSys();
 
