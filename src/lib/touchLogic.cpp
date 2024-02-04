@@ -44,19 +44,20 @@ int searchNearestPos(const int mapTable[9], int x, int n){
            return -1;
        }
    }
+   return -1;
 }
-void dacPos(drawData drData, posData poData, int x, int y, int &o_x, int &o_y) {
+void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y) {
     bool found = false;
     for (int i = 0; i<drData.width; i++) {
-        if (poData.tableHor[i] == x) {
+        if (poData.tableHor[i] == locationData.playerPosX) {
             o_x = i;
             found = true;
         }
     }
-    if (!found) o_x = searchNearestPos(poData.tableHor, x, drData.width);
+    if (!found) o_x = searchNearestPos(poData.tableHor,  locationData.playerPosX, drData.width);
     if (o_x != -1) {
         for (int i = 0; i < drData.height; i++) {
-            if (poData.tableVer[i] == y) {
+            if (poData.tableVer[i] ==  locationData.playerPosY) {
                 o_y = i;
                 return;
             }

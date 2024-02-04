@@ -5,13 +5,12 @@
 #ifndef TICTACTOEV2_WINLOGIC_H
 #define TICTACTOEV2_WINLOGIC_H
 
+#include "drawScreen.h"
+
 struct Player {
-    int PosX;
-    int PosY;
     int score;
-    int intWin;
+    int time;
 };
-
-bool HorVerCheck(Player Data, char table[9][9], int width, int height, char Player);
-
+bool crossCheck(int intWin, char table[9][9], drawData drawData, char Player);
+bool HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player);
 #endif //TICTACTOEV2_WINLOGIC_H

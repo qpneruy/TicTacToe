@@ -16,7 +16,7 @@ struct drawData {
 
 void inBanCo(char tableData[9][9], drawData data);
 
-void inBangDiem(short Oscore, short Xscore, char peri);
+void inBangDiem(short Oscore, short Xscore);
 
 void SetWindowSize(short width, short height);
 
