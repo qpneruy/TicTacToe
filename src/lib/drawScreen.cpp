@@ -70,7 +70,7 @@ std::string BangDiemSt[] = {
         "_________________/"
 };
 
-void inBangDiem(short Oscore, short Xscore, char peri) {
+void inBangDiem(short Oscore, short Xscore) {
     for (int i = 0; i <= 15; i++) {
         gotoXY(60, 7 + i);
         std::cout << BangDiemSt[i];
@@ -83,8 +83,7 @@ void inBangDiem(short Oscore, short Xscore, char peri) {
             std::cout << Oscore;
         }
     }
-    gotoXY(70, 20);
-    std::cout << peri;
+
 }
 
 std::string ThoiGianSt[] = {

@@ -7,5 +7,5 @@
 #include "include/mapping.h"
 
 void getPosMouse(posData &data);
-void dacPos(drawData drData,posData poData, int x, int y, int &o_x, int &o_y);
+void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y);
 #endif //TICTACTOEV2_TOUCHLOGIC_H

@@ -1,0 +1,51 @@
+void init_(drawData drData, posData &poData){
+    char table[9][9] = {};
+    SetWindowSize(80, 35);
+    inLogo();
+    inBangDiem(0, 0);
+    inBangThoiGian(0, 0);
+    inBanCo(table, drData);
+    printInfo();
+    startMap(drData, poData);
+}
+
+//    char table[9][9] = {};
+//    int width, height;
+//    int px, py;
+//    bool opr = true,
+//         xpr = false;
+//    drawData drawData{};
+//    posData locationData;
+//    Player Oplayer{};
+//    Player Xplayer{};
+//    width = 9;
+//    height = 9;
+//
+//    drawData.height = height;
+//    drawData.width = width;
+//    drawData.x = 40 - (width * 4 / 2) - 3;
+//    drawData.y = 9;
+//    init_(drawData, locationData);
+//    while (true) {
+//        getPosMouse(locationData);
+//        dacPos(drawData, locationData, locationData, px, py);
+//        if (px != -1 && py != -1) {
+//            if (opr) {
+//                table[py][px] = 'O';
+//                gotoXY(70, 20);
+//                cout << 'X';
+//                opr = false;
+//                xpr = true;
+//            } else if (xpr) {
+//                table[py][px] = 'X';
+//                gotoXY(70, 20);
+//                cout << 'O';
+//                xpr = false;
+//                opr = true;
+//            }
+//            inBanCo(table, drawData);
+//        }
+
+//    }
+
+
