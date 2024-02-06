@@ -29,3 +29,16 @@
 3842	3980	7288903868497870	TicTacToev2.exe	40d19fc99d07cccc
 6	2983	7288904126429637	CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj	8d93fc695db940f4
 2984	3129	7288904127765392	TicTacToev2.exe	40d19fc99d07cccc
+58	1117	7288907539259300	CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj	7c41bb678c739ba5
+52	3064	7288907558759639	CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj	a29e29a6ca8565dc
+4	3076	7288907558879953	CMakeFiles/TicTacToev2.dir/src/main.cpp.obj	e03949fd624713a9
+47	3103	7288907559146871	CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj	59171b3aba6ae85d
+41	3368	7288907561803181	CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj	8d93fc695db940f4
+3368	3508	7288907563124811	TicTacToev2.exe	40d19fc99d07cccc
+8	2586	7288908733310697	CMakeFiles/TicTacToev2.dir/src/main.cpp.obj	e03949fd624713a9
+23	1599	7288908975901564	CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj	7c41bb678c739ba5
+18	3988	7288909002292330	CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj	a29e29a6ca8565dc
+14	4224	7288909004563453	CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj	59171b3aba6ae85d
+4	4474	7288909007143032	CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj	8d93fc695db940f4
+6	2287	7288909048719964	CMakeFiles/TicTacToev2.dir/src/main.cpp.obj	e03949fd624713a9
+2288	2414	7288909049942464	TicTacToev2.exe	40d19fc99d07cccc

@@ -16,15 +16,13 @@ struct drawData {
 
 void inBanCo(char tableData[9][9], drawData data);
 
-void inBangDiem(drawData data, short Oscore, short Xscore);
+void inBangDiem(short Oscore, short Xscore);
 
 void SetWindowSize(short width, short height);
 
-void inBangThoiGian(drawData drData, int XTime, int OTime);
+void inBangThoiGian(int XTime, int OTime);
 
 void gotoXY(int x, int y);
-
-short inMeluChinh();
 
 void clearScreen();
 
