@@ -11,6 +11,7 @@
 //       ░░░╚═╝░░░╚═╝░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚════╝░╚══════╝     ||     ||
 //====================================================================================
 #include <iostream>
+#include <conio.h>
 #include "include/drawScreen.h"
 #include "include/winLogic.h"
 #include "include/mapping.h"
@@ -18,92 +19,78 @@
 
 #include <Windows.h>
 void init_(drawData drData, posData &poData){
-    char table[9][9] = {};
-    SetWindowSize(95, 35);
+
+    SetWindowSize(95, 34);
+    inMenuChinh(drData);
     inLogo();
+    printInfo();
+    inKhung(78, 34);
+    startMap(drData, poData);
+}
+void LoadGame(drawData drData, posData poData, char table[9][9]) {
+    gotoXY(0, 0);
+    inBanCo(table, drData);
     inBangDiem(drData,0, 0);
     inBangThoiGian(drData, 0, 0);
-    inBanCo(table, drData);
-    printInfo();
-    startMap(drData, poData);
 }
 using namespace std;
 int main() {
     char table[9][9] = {};
     int width, height;
+    int ch;
     int px, py;
+    int intWin = 3;
     bool opr = true,
          xpr = false;
     drawData drawData{};
     posData locationData;
     Player Oplayer{};
     Player Xplayer{};
-    width = 9;
-    height = 9;
 
-    drawData.height = height;
-    drawData.width = width;
-    drawData.x = 40 - (width * 4 / 2) - 3;
-    drawData.y = 12;
+    drawData.x = 40;
+    drawData.y = 11;
     init_(drawData, locationData);
-    while (true) {
-        getPosMouse(locationData);
-        dacPos(drawData, locationData, locationData, px, py);
-        if (px != -1 && py != -1) {
-            if (opr) {
-                table[py][px] = 'O';
-                gotoXY(70, drawData.y + 12);
-                cout << 'X';
-                opr = false;
-                xpr = true;
-            } else if (xpr) {
-                table[py][px] = 'X';
-                gotoXY(70, drawData.y + 12);
-                cout << 'O';
-                xpr = false;
-                opr = true;
+    switch (menuHandle(drawData)) {
+        case 0:
+            clearScreen();
+            inLogo();
+            inKhung(78, 34);
+            gotoXY(drawData.x - 12 , drawData.y);
+            cout << "NHAP KICH THUOC BAN CO !\n";
+            gotoXY(drawData.x - 11 , drawData.y + 1);
+            cout << "      [N] x [M]        ";
+            while (true) {
+                gotoXY(drawData.x - 4, drawData.y + 1);
+                height = getASCIINumber() - 48;
+                cout << height;
+                gotoXY(drawData.x + 2, drawData.y + 1);
+                width = getASCIINumber() - 48;
+                cout << (width != -35 && width != -40) ? width : ;
+                ch = getch();
+                if (ch == 13) {
+                    drawData.height = height;
+                    drawData.width = width;
+                    break;
+                }
+                if (ch == 8) {
+                    gotoXY(drawData.x - 11 , drawData.y + 1);
+                    cout << "      [N] x [M]        ";
+                    drawData.height = 0;
+                    drawData.width = 0;
+                    gotoXY(drawData.x - 4, drawData.y + 1);
+                }
             }
-            inBanCo(table, drawData);
-        }
-
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
     }
-// cout << "╓──────────────────────────────────────────────────────────────────────────────╖\n"
-//         "║                                                                              ║\n"
-//         "║ ░░░████████╗██╗░█████╗░████████╗░█████╗░░█████╗░████████╗░█████╗░███████╗░░░ ║\n"
-//         "║ ░░░╚══██╔══╝██║██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔════╝░░░ ║\n"
-//         "║ ░░░░░░██║░░░██║██║░░╚═╝░░░██║░░░███████║██║░░╚═╝░░░██║░░░██║░░██║█████╗░░░░░ ║\n"
-//         "║ ░░░░░░██║░░░██║██║░░██╗░░░██║░░░██╔══██║██║░░██╗░░░██║░░░██║░░██║██╔══╝░░░░░ ║\n"
-//         "║ ░░░░░░██║░░░██║╚█████╔╝░░░██║░░░██║░░██║╚█████╔╝░░░██║░░░╚█████╔╝███████╗░░░ ║\n"
-//         "║ ░░░░░░╚═╝░░░╚═╝░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚════╝░╚══════╝░░░ ║\n"
-//         "║ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ║\n"
-//         "║______________________________________________________________________________║\n"
-//         "║══════════════════════════════════════════════════════════════════════════════║\n"
-//         "║                              ╿           ╿                                   ║\n"
-//         "║                              ┋           ┋                                   ║\n"
-//         "║                              ┋           ┋                                   ║\n"
-//         "║                              ┋           ┋                                   ║\n"
-//         "║      .''.      .             ╽           ╽                                   ║\n"
-//         "║     :_\\/_:   _\\(/_  .:.      ╟-─────────-╢                                   ║\n"
-//         "║ .''.: /\\ :/   ./)\\   ':'     ║ Tiep Tuc! ║                    .''.           ║\n"
-//         "║ :_\\/_:'.:::.  /  .*''*       ║           ║           *''*    :_\\/_:     .    ║\n"
-//         "║ : /\\ : ::::: /   *_\\/_*/     ║ Choi Moi  ║          *_\\/_*   : /\\ :  .'.:.'. ║\n"
-//         "║ \\'..'  ':::'    \\* /\\ *      ║           ║          * /\\ * :  '..'.  -=:o:=- ║\n"
-//         "║      *           \\*..*       ║ Cai Dat   ║            * '.\\'/.' _\\(/_'.':'.' ║\n"
-//         "║       *             *        ║           ║              -= o =-  /)\\    '    ║\n"
-//         "║       *             *        ║ Giup Do   ║                 *            *    ║\n"
-//         "║      *             *         ║           ║                 *            *    ║\n"
-//         "║      *        |   *          ║ Tac Gia   ║                  *           *    ║\n"
-//         "║ _  *          =   *          ╚═══════════╝                   *         *     ║\n"
-//         "║| |..         ===  *                                    .  ' ._____     *     ║\n"
-//         "║|    |         |    *                            '           |.   |' .---\"|   ║\n"
-//         "║|    | .       | .  * _                               .--'| '||   | _|    |   ║\n"
-//         "║|    |   .     |  .-'|                            __  |   |  |    ||      |   ║\n"
-//         "║|    .-----. . |  |' |  ||                  ' |  |  | |   |  |    ||      |   ║ \n"
-//         "║|  .'  | |  './\"\\ |  '-.\"\".      -2024-      .\". |  |'|   |-.|    ||      |   ║\n"
-//         "║|   |       | | | |    |  |                  | | |  | |   |  |    ||      |-- ║\n"
-//         "║|   |       |/   \\|    |  |                  | | |  | |   |  |    ||      |  .║ \n"
-//         "╚══════════════════════════════════════════════════════════════════════════════╝";
  while (true){
-     
+
  }
 }
