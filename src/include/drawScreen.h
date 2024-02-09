@@ -22,9 +22,15 @@ void SetWindowSize(short width, short height);
 
 void inBangThoiGian(drawData drData, int XTime, int OTime);
 
+void inKhung(int width, int height);
+
 void gotoXY(int x, int y);
 
-short inMeluChinh();
+int menuHandle(drawData Data);
+
+void inMenuChinh(drawData Data);
+
+int getASCIINumber();
 
 void clearScreen();
 
