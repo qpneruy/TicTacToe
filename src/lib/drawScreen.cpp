@@ -165,7 +165,7 @@ std::string MainMenu[] = {"╿           ╿\n",
                           "┋           ┋\n",
                           "╽           ╽\n",
                           "╟-─────────-╢\n",
-                          "║ Tiep Tuc! ║\n",
+                          "║ Tiep Tuc  ║\n",
                           "║           ║\n",
                           "║ Choi Moi  ║\n",
                           "║           ║\n",
@@ -197,13 +197,13 @@ void inMenuChinh(drawData Data) {
                  " | |..         ===  *                                       ' ._____     *     \n"
                  " |    |         |    *                                        |.   |' .---\"|   \n"
                  " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
-                 " |    |   .     |  .-'|                            __  |   |  |    ||      |   \n"
-                 " |    .-----. . |  |' |  ||                  ' |  |  | |   |  |    ||      |    \n"
-                 " |  .'  | |  './\"\\ |  '-.\"\".      -2024-      .\". |  |'|   |-.|    ||      | \n"
-                 " |   |       | | | |    |  |                  | | |  | |   |  |    ||      |-- \n"
-                 " |   |       |/   \\|    |  |                  | | |  | |   |  |    ||      |  . \n";
+                 " |    |   .     |  .-'|                                |   |  |    ||      |   \n"
+                 " |    .-----. . |  |' |  ||                      ' |   |   |  |    ||      |    \n"
+                 " |  .'  | |  './\"\\ |  '-.\"\".        -2024-        .\". '|   |-.|    ||      | \n"
+                 " |   |       | | | |    |  |                      | |  |   |  |    ||      |-- \n"
+                 " |   |       |/   \\|    |  |                      | |  |   |  |    ||      |  . \n";
     for (int i = 0; i <= 15; i++) {
-        gotoXY(Data.x - 9, Data.y + i - 1);
+        gotoXY(Data.x - 8, Data.y + i - 1);
         std::cout << MainMenu[i];
     }
 }
@@ -214,7 +214,7 @@ int menuHandle(drawData Data) {
     int ch;
     int index = 0;
     int pointY = Data.y + 5;
-    gotoXY(Data.x - 8, pointY);
+    gotoXY(Data.x - 7, pointY);
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
                                       BACKGROUND_INTENSITY);
     std::cout << " > " << MainMenuStr[0];
@@ -225,16 +225,16 @@ int menuHandle(drawData Data) {
                 pointY -= 2;
                 --index;
                 if (pointY <= Data.y + 3) {
-                    gotoXY(Data.x - 8, pointY + 2);
+                    gotoXY(Data.x - 7, pointY + 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index + 1] << "  ";
                     index = 4;
                     pointY = Data.y + 13;
                 }
-                gotoXY(Data.x - 8, pointY + 2);
+                gotoXY(Data.x - 7, pointY + 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 std::cout << " " << MainMenuStr[index + 1] << "  ";
-                gotoXY(Data.x - 8, pointY);
+                gotoXY(Data.x - 7, pointY);
                 SetConsoleTextAttribute(hConsole,
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
                                         BACKGROUND_INTENSITY);
@@ -244,23 +244,23 @@ int menuHandle(drawData Data) {
                 pointY += 2;
                 ++index;
                 if (pointY >= Data.y + 15) {
-                    gotoXY(Data.x - 8, pointY - 2);
+                    gotoXY(Data.x - 7, pointY - 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index - 1] << "  ";
                     index = 0;
                     pointY = Data.y + 5;
                 }
-                gotoXY(Data.x - 8, pointY - 2);
+                gotoXY(Data.x - 7, pointY - 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 std::cout << " " << MainMenuStr[index - 1] << "  ";
-                gotoXY(Data.x - 8, pointY);
+                gotoXY(Data.x - 7, pointY);
                 SetConsoleTextAttribute(hConsole,
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
                                         BACKGROUND_INTENSITY);
                 std::cout << " > " << MainMenuStr[index];
             }
             if (ch == KEY_ENTER) {
-                gotoXY(Data.x - 8, Data.y + 5 + index * 2);
+                gotoXY(Data.x - 7, Data.y + 5 + index * 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 std::cout << "                        ";
                 return index;

@@ -1,7 +1,6 @@
 //
 // Created by huuti on 010, 10/02/2024.
 //
-
 #include <conio.h>
 #include <Windows.h>
 #include "include/dataInput.h"
@@ -10,9 +9,35 @@ void getNumber(int &x) {
     x = getASCIINumber() - 48;
     std::cout << x;
 }
-void UserInput(drawData drData, posData poData) {
-    int width, height, ch, intWin;
+void UserInput(drawData &drData) {
+    int width, height, ch;
+    bool ThisIsRealEndTrustMe = false;
     clearScreen();
+    gotoXY(0, drData.y);
+    std::cout << "                                                                                \n"
+                 "                                                                                \n"
+                 "                                                                                \n"
+                 "                                                                                \n"
+                 "       .''.      .                                                              \n"
+                 "      :_\\/_:   _\\(/_  .:.                                                     \n"
+                 "  .''.: /\\ :/   ./)\\   ':'                                     .''.           \n"
+                 "  :_\\/_:'.:::.  /  .*''*                              *''*    :_\\/_:     .    \n"
+                 "  : /\\ : ::::: /   *_\\/_*/                           *_\\/_*   : /\\ :  .'.:.'. \n"
+                 "  \\'..'  ':::'    \\* /\\ *                            * /\\ * :  '..'.  -=:o:=- \n"
+                 "       *           \\*..*                               * '.\\'/.' _\\(/_'.':'.' \n"
+                 "        *             *                                    -= o =-  /)\\    '   \n"
+                 "        *             *                                       *            *    \n"
+                 "       *             *                                        *            *    \n"
+                 "       *        |   *                                          *           *    \n"
+                 "  _  *          =   *                                          *         *     \n"
+                 " | |..         ===  *                                       ' ._____     *     \n"
+                 " |    |         |    *                                        |.   |' .---\"|   \n"
+                 " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
+                 " |    |   .     |  .-'|                            __  |   |  |    ||      |   \n"
+                 " |    .-----. . |  |' |  ||                  ' |  |  | |   |  |    ||      |    \n"
+                 " |  .'  | |  './\"\\ |  '-.\"\".      -2024-      .\". |  |'|   |-.|    ||      | \n"
+                 " |   |       | | | |    |  |                  | | |  | |   |  |    ||      |-- \n"
+                 " |   |       |/   \\|    |  |                  | | |  | |   |  |    ||      |  . \n";
     inLogo();
     inKhung(78, 34);
     gotoXY(drData.x - 13, drData.y - 1);
@@ -21,7 +46,7 @@ void UserInput(drawData drData, posData poData) {
     std::cout << "NHAP KICH THUOC CUA BAN CO";
     gotoXY(drData.x - 11, drData.y + 1);
     std::cout << "   └---[?] x [?]---┘    ";
-    while(true) {
+    while(!ThisIsRealEndTrustMe) {
         bool End = false;
         while (!End) {
             bool success = true;
@@ -75,8 +100,9 @@ void UserInput(drawData drData, posData poData) {
             std::cout << "       └---[?]---┘  ";
             while (success) {
                 gotoXY(drData.x, drData.y + 4);
-                getNumber(intWin);
-                if (intWin > std::max(drData.width, drData.height)) {
+                getNumber(drData.intWin);
+
+                if (drData.intWin > std::max(drData.width, drData.height)) {
                     gotoXY(drData.x - 12, drData.y + 4);
                     std::cout << "       └---[?]---┘  ";
                     gotoXY(drData.x - 12, drData.y + 5);
@@ -91,7 +117,7 @@ void UserInput(drawData drData, posData poData) {
                 if (ch == 8) {
                     gotoXY(drData.x - 12, drData.y + 4);
                     std::cout << "       └---[?]---┘  ";
-                    intWin = 0;
+                    drData.intWin = 0;
                     break;
                 }
                 if (ch == 13) {
@@ -110,17 +136,30 @@ void UserInput(drawData drData, posData poData) {
         std::cout << "CHON NGUOI CHOI DI TRUOC";
         gotoXY(drData.x - 12, drData.y+7);
         std::cout << "   └---[X]-----[O]---┘  ";
+        gotoXY(drData.x - 4, drData.y+8);
+        std::cout << "↑        ";
         End = false;
-        while (!End) {\
+        int count = 0;
+        while (!End) {
             if (kbhit()) {
                 ch = getch();
-           std::cout << ch;
-                if (ch == 22477) {
-                    gotoXY(drData.x, drData.y + 7);
-                    std::cout << "               ↑";
-                } else if (ch == 22475) {
-                    gotoXY(drData.x, drData.y + 7);
-                    std::cout << "↑              ";
+                if (ch == 77) {
+                    count = 1;
+                    gotoXY(drData.x - 8, drData.y + 8);
+                    std::cout << "            ↑";
+                } else if (ch == 75) {
+                    gotoXY(drData.x- 4, drData.y + 8);
+                    std::cout << "↑        ";
+                    count = -1;
+                }
+                if (ch == 13) {
+                    (count == 1) ? drData.opr = true : drData.xpr = true;
+                    End = true;
+                    ThisIsRealEndTrustMe = true;
+                    gotoXY(drData.x - 13, drData.y);
+                    std::cout << "                               ";
+                    gotoXY(drData.x - 13, drData.y - 1);
+                    std::cout << "                               ";
                 }
             }
         }
