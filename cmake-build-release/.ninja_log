@@ -1,12 +1,16 @@
 # ninja log v5
-19	832	7292318844102200	CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj	7c41bb678c739ba5
-4	2800	7292318863894376	CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj	8d93fc695db940f4
-1691	1783	7292411558765254	TicTacToev2.exe	148f7d3b7f7d3556
-6	2025	7292377253400597	CMakeFiles/TicTacToev2.dir/src/main.cpp.obj	e03949fd624713a9
+2370	2484	7292749987914582	TicTacToev2.exe	148f7d3b7f7d3556
+5	2764	7292749254849037	CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj	8d93fc695db940f4
+33	1637	7292746103861707	CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj	7c41bb678c739ba5
+7	2369	7292749986242736	CMakeFiles/TicTacToev2.dir/src/main.cpp.obj	e03949fd624713a9
 1	163	7292334782302009	build.ninja	b7602d3640ccba37
-26	792	7292318843774625	CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj	a29e29a6ca8565dc
 0	15	0	clean	edd914b0856e470
-5	1704	7292329050432268	CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj	59171b3aba6ae85d
-3	1691	7292411557889742	CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj	8f5d0291bd75ed7d
-3	1723	7292411800828957	CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj	8f5d0291bd75ed7d
-1723	1813	7292411801699546	TicTacToev2.exe	148f7d3b7f7d3556
+26	1636	7292746103631041	CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj	a29e29a6ca8565dc
+21	3646	7292746124299755	CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj	59171b3aba6ae85d
+15	3676	7292746124612101	CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj	8f5d0291bd75ed7d
+5	2579	7292780315324028	CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj	8f5d0291bd75ed7d
+2579	2690	7292780316373303	TicTacToev2.exe	148f7d3b7f7d3556
+4	2846	7292780669582110	CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj	8f5d0291bd75ed7d
+2846	2945	7292780670558390	TicTacToev2.exe	148f7d3b7f7d3556
+3	3364	7292783308956373	CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj	8d93fc695db940f4
+3364	3459	7292783309861811	TicTacToev2.exe	148f7d3b7f7d3556

@@ -9,10 +9,13 @@
 #include <iostream>
 
 struct drawData {
-    int x;
-    int y;
-    int width;
-    int height;
+    int x{},
+        y{},
+        width{},
+        height{};
+    bool opr = false,
+         xpr = false;
+    int intWin{};
 };
 
 void inBanCo(char tableData[9][9], drawData data);

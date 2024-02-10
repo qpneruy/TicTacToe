@@ -3,11 +3,11 @@
 //
 
 #ifndef TICTACTOEV2_DATAINPUT_H
-#define TICTACTOEV2_DATAINPUT_H
+#define TICTACTOEVd2_DATAINPUT_H
 #include "drawScreen.h"
 #include "mapping.h"
 
-void UserInput(drawData drData, posData poData);
+void UserInput(drawData &drData);
 
 
 #endif //TICTACTOEV2_DATAINPUT_H

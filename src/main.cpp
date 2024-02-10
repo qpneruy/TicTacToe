@@ -28,36 +28,34 @@ void init_(drawData drData, posData &poData) {
 }
 
 
-void LoadGame(drawData drData, posData locationData) {
+void LoadGame(drawData drData, posData poData) {
     char table[9][9] = {};
-    startMap(drData, locationData);
+    startMap(drData, poData);
     int px, py;
     int intWin = 9;
-    bool opr = true,
-            xpr = false;
+
     gotoXY(0, 0);
     inBanCo(table, drData);
     inBangDiem(drData, 0, 0);
     inBangThoiGian(drData, 0, 0);
     while (true) {
-        getPosMouse(locationData);
-        dacPos(drData, locationData, locationData, px, py);
-        cout << py << " " << px;
+        getPosMouse(poData);
+        dacPos(drData, poData, poData, px, py);
         if (px != -1 && py != -1) {
-            if (opr) {
+            if (drData.opr) {
                 table[py][px] = 'O';
                 gotoXY(71, drData.y + 10);
                 cout << 'X';
-                opr = false;
-                xpr = true;
-            } else if (xpr) {
+                drData.opr = false;
+                drData.xpr = true;
+            } else if (drData.xpr) {
                 table[py][px] = 'X';
                 gotoXY(71, drData.y + 10);
                 cout << 'O';
-                xpr = false;
-                opr = true;
+                drData.xpr = false;
+                drData.opr = true;
             }
-            char currentPlayer = xpr ? 'O' : 'X';
+            char currentPlayer = drData.xpr ? 'O' : 'X';
             if (crossCheck(intWin, table, drData, currentPlayer) ||
             HorVerCheck(intWin, table, drData, currentPlayer)) {
                 // win logic
@@ -71,16 +69,17 @@ void LoadGame(drawData drData, posData locationData) {
 
 int main() {
     drawData drawData{};
-    posData locationData;
+    posData poData;
     Player Oplayer{};
     Player Xplayer{};
 
     drawData.x = 40;
     drawData.y = 11;
-    init_(drawData, locationData);
+    init_(drawData, poData);
     switch (menuHandle(drawData)) {
         case 0:
-            UserInput(drawData, locationData);
+            UserInput(drawData);
+            LoadGame(drawData, poData);
             break;
         case 1:
 
