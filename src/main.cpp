@@ -16,32 +16,60 @@
 #include "include/winLogic.h"
 #include "include/mapping.h"
 #include "include/touchLogic.h"
-
+#include "include/dataInput.h"
 #include <Windows.h>
-void init_(drawData drData, posData &poData){
+using namespace std;
+void init_(drawData drData, posData &poData) {
 
     SetWindowSize(95, 34);
     inMenuChinh(drData);
     inLogo();
-    printInfo();
     inKhung(78, 34);
-    startMap(drData, poData);
 }
-void LoadGame(drawData drData, posData poData, char table[9][9]) {
+
+
+void LoadGame(drawData drData, posData locationData) {
+    char table[9][9] = {};
+    startMap(drData, locationData);
+    int px, py;
+    int intWin = 9;
+    bool opr = true,
+            xpr = false;
     gotoXY(0, 0);
     inBanCo(table, drData);
-    inBangDiem(drData,0, 0);
+    inBangDiem(drData, 0, 0);
     inBangThoiGian(drData, 0, 0);
+    while (true) {
+        getPosMouse(locationData);
+        dacPos(drData, locationData, locationData, px, py);
+        cout << py << " " << px;
+        if (px != -1 && py != -1) {
+            if (opr) {
+                table[py][px] = 'O';
+                gotoXY(71, drData.y + 10);
+                cout << 'X';
+                opr = false;
+                xpr = true;
+            } else if (xpr) {
+                table[py][px] = 'X';
+                gotoXY(71, drData.y + 10);
+                cout << 'O';
+                xpr = false;
+                opr = true;
+            }
+            char currentPlayer = xpr ? 'O' : 'X';
+            if (crossCheck(intWin, table, drData, currentPlayer) ||
+            HorVerCheck(intWin, table, drData, currentPlayer)) {
+                // win logic
+                break;
+            }
+            inBanCo(table, drData);
+        }
+
+    }
 }
-using namespace std;
+
 int main() {
-    char table[9][9] = {};
-    int width, height;
-    int ch;
-    int px, py;
-    int intWin = 3;
-    bool opr = true,
-         xpr = false;
     drawData drawData{};
     posData locationData;
     Player Oplayer{};
@@ -52,36 +80,10 @@ int main() {
     init_(drawData, locationData);
     switch (menuHandle(drawData)) {
         case 0:
-            clearScreen();
-            inLogo();
-            inKhung(78, 34);
-            gotoXY(drawData.x - 12 , drawData.y);
-            cout << "NHAP KICH THUOC BAN CO !\n";
-            gotoXY(drawData.x - 11 , drawData.y + 1);
-            cout << "      [N] x [M]        ";
-            while (true) {
-                gotoXY(drawData.x - 4, drawData.y + 1);
-                height = getASCIINumber() - 48;
-                cout << height;
-                gotoXY(drawData.x + 2, drawData.y + 1);
-                width = getASCIINumber() - 48;
-                cout << (width != -35 && width != -40) ? width : ;
-                ch = getch();
-                if (ch == 13) {
-                    drawData.height = height;
-                    drawData.width = width;
-                    break;
-                }
-                if (ch == 8) {
-                    gotoXY(drawData.x - 11 , drawData.y + 1);
-                    cout << "      [N] x [M]        ";
-                    drawData.height = 0;
-                    drawData.width = 0;
-                    gotoXY(drawData.x - 4, drawData.y + 1);
-                }
-            }
+            UserInput(drawData, locationData);
             break;
         case 1:
+
             break;
         case 2:
             break;
@@ -90,7 +92,7 @@ int main() {
         case 4:
             break;
     }
- while (true){
+    while (true) {
 
- }
+    }
 }

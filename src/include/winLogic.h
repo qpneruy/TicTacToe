@@ -11,6 +11,9 @@ struct Player {
     int score;
     int time;
 };
+
 bool crossCheck(int intWin, char table[9][9], drawData drawData, char Player);
+
 bool HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player);
+
 #endif //TICTACTOEV2_WINLOGIC_H

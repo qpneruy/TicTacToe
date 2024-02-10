@@ -6,11 +6,14 @@
 #include <iomanip>
 #include <conio.h>
 #include "include/drawScreen.h"
+
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_ENTER 13
-#define KEY_ESC 27
-void gotoXY(int x, int y) {
+
+void gotoXY(int _x, int _y) {
+    auto x = (short) _x;
+    auto y = (short) _y;
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD CursorPosition;
     CursorPosition.X = x;
@@ -20,28 +23,28 @@ void gotoXY(int x, int y) {
 
 void inBanCo(char tableData[9][9], drawData data) {
 
-        gotoXY(data.x-(data.width * 4 / 2), data.y-1);
-        std::cout << "╿\n";
-        gotoXY(data.x-(data.width * 4 / 2), data.y);
-        std::cout << "┋\n";
-        gotoXY(data.x-(data.width * 4 / 2), data.y+1);
-        std::cout << "╽\n";
+    gotoXY(data.x - (data.width * 4 / 2), data.y - 1);
+    std::cout << "╿\n";
+    gotoXY(data.x - (data.width * 4 / 2), data.y);
+    std::cout << "┋\n";
+    gotoXY(data.x - (data.width * 4 / 2), data.y + 1);
+    std::cout << "╽\n";
 
 
-    gotoXY(data.x + (data.width * 4 / 2), data.y-1);
+    gotoXY(data.x + (data.width * 4 / 2), data.y - 1);
     std::cout << "╿\n";
     gotoXY(data.x + (data.width * 4 / 2), data.y);
     std::cout << "┋\n";
-    gotoXY(data.x + (data.width * 4 / 2), data.y+1);
+    gotoXY(data.x + (data.width * 4 / 2), data.y + 1);
     std::cout << "╽\n";
 
     for (int i = 40 - (data.width * 4 / 2) + 2; i < 40 + (data.width * 4 / 2) - 1; i++) {
-        gotoXY(i, data.y+1);
+        gotoXY(i, data.y + 1);
         std::cout << "_";
     }
     std::cout << "\n";
     for (int i = 0; i <= data.height; i++) {
-        gotoXY(data.x-(data.width * 4 / 2) - 2, data.y += 2);
+        gotoXY(data.x - (data.width * 4 / 2) - 2, data.y += 2);
         std::cout << "  ";
         if (i == 0) {
             for (int o = 0; o < data.width; o++) {
@@ -53,7 +56,7 @@ void inBanCo(char tableData[9][9], drawData data) {
                 if (o == 0) std::cout << "└"; else std::cout << "───┴";
             }
             std::cout << "───┘▒";
-        } else{
+        } else {
             for (int o = 0; o <= data.width; o++) {
                 if (o == 0) { std::cout << "├"; } // "+" + (2)
                 else {
@@ -61,7 +64,7 @@ void inBanCo(char tableData[9][9], drawData data) {
                 }
             }
         }
-        gotoXY(data.x-(data.width * 4 / 2) - 2, data.y + 1);
+        gotoXY(data.x - (data.width * 4 / 2) - 2, data.y + 1);
         if (i != data.height) {
             std::cout << "  ";
             for (int j = 0; j < data.width; j++) {
@@ -101,7 +104,7 @@ void inBangDiem(drawData data, short Oscore, short Xscore) {
             std::cout << Xscore;
         }
         if (i == 9) {
-            gotoXY(data.x + 21 + 7,  data.y + 6);
+            gotoXY(data.x + 21 + 7, data.y + 6);
             std::cout << Oscore;
         }
     }
@@ -155,65 +158,65 @@ void inLogo() {
                  " ══════════════════════════════════════════════════════════════════════════════ ";
 }
 
-void printInfo() {
-    gotoXY(0, 35);
-    std::cout << "";
-}
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 std::string MainMenu[] = {"╿           ╿\n",
-                               "┋           ┋\n",
-                               "┋           ┋\n",
-                               "┋           ┋\n",
-                               "╽           ╽\n",
-                               "╟-─────────-╢\n",
-                               "║ Tiep Tuc! ║\n",
-                               "║           ║\n",
-                               "║ Choi Moi  ║\n",
-                               "║           ║\n",
-                               "║ Cai Dat   ║\n",
-                               "║           ║\n",
-                               "║ Giup Do   ║\n",
-                               "║           ║\n",
-                               "║ Tac Gia   ║\n",
-                               "╚═══════════╝\n"};
+                          "┋           ┋\n",
+                          "┋           ┋\n",
+                          "┋           ┋\n",
+                          "╽           ╽\n",
+                          "╟-─────────-╢\n",
+                          "║ Tiep Tuc! ║\n",
+                          "║           ║\n",
+                          "║ Choi Moi  ║\n",
+                          "║           ║\n",
+                          "║ Cai Dat   ║\n",
+                          "║           ║\n",
+                          "║ Giup Do   ║\n",
+                          "║           ║\n",
+                          "║ Tac Gia   ║\n",
+                          "╚═══════════╝\n"};
+
 void inMenuChinh(drawData Data) {
-gotoXY(0 , Data.y);
-std::cout << "                                                                                \n"
-             "                                                                                \n"
-             "                                                                                \n"
-             "                                                                                \n"
-             "       .''.      .                                                              \n"
-             "      :_\\/_:   _\\(/_  .:.                                                     \n"
-             "  .''.: /\\ :/   ./)\\   ':'                                     .''.           \n"
-             "  :_\\/_:'.:::.  /  .*''*                              *''*    :_\\/_:     .    \n"
-             "  : /\\ : ::::: /   *_\\/_*/                           *_\\/_*   : /\\ :  .'.:.'. \n"
-             "  \\'..'  ':::'    \\* /\\ *                            * /\\ * :  '..'.  -=:o:=- \n"
-             "       *           \\*..*                               * '.\\'/.' _\\(/_'.':'.' \n"
-             "        *             *                                    -= o =-  /)\\    '   \n"
-             "        *             *                                       *            *    \n"
-             "       *             *                                        *            *    \n"
-             "       *        |   *                                          *           *    \n"
-             "  _  *          =   *                                          *         *     \n"
-             " | |..         ===  *                                       ' ._____     *     \n"
-             " |    |         |    *                                        |.   |' .---\"|   \n"
-             " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
-             " |    |   .     |  .-'|                            __  |   |  |    ||      |   \n"
-             " |    .-----. . |  |' |  ||                  ' |  |  | |   |  |    ||      |    \n"
-             " |  .'  | |  './\"\\ |  '-.\"\".      -2024-      .\". |  |'|   |-.|    ||      | \n"
-             " |   |       | | | |    |  |                  | | |  | |   |  |    ||      |-- \n"
-             " |   |       |/   \\|    |  |                  | | |  | |   |  |    ||      |  . \n";
-    for (int i = 0; i <= 15; i++ ){
-        gotoXY(Data.x-9, Data.y + i - 1);
+    gotoXY(0, Data.y);
+    std::cout << "                                                                                \n"
+                 "                                                                                \n"
+                 "                                                                                \n"
+                 "                                                                                \n"
+                 "       .''.      .                                                              \n"
+                 "      :_\\/_:   _\\(/_  .:.                                                     \n"
+                 "  .''.: /\\ :/   ./)\\   ':'                                     .''.           \n"
+                 "  :_\\/_:'.:::.  /  .*''*                              *''*    :_\\/_:     .    \n"
+                 "  : /\\ : ::::: /   *_\\/_*/                           *_\\/_*   : /\\ :  .'.:.'. \n"
+                 "  \\'..'  ':::'    \\* /\\ *                            * /\\ * :  '..'.  -=:o:=- \n"
+                 "       *           \\*..*                               * '.\\'/.' _\\(/_'.':'.' \n"
+                 "        *             *                                    -= o =-  /)\\    '   \n"
+                 "        *             *                                       *            *    \n"
+                 "       *             *                                        *            *    \n"
+                 "       *        |   *                                          *           *    \n"
+                 "  _  *          =   *                                          *         *     \n"
+                 " | |..         ===  *                                       ' ._____     *     \n"
+                 " |    |         |    *                                        |.   |' .---\"|   \n"
+                 " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
+                 " |    |   .     |  .-'|                            __  |   |  |    ||      |   \n"
+                 " |    .-----. . |  |' |  ||                  ' |  |  | |   |  |    ||      |    \n"
+                 " |  .'  | |  './\"\\ |  '-.\"\".      -2024-      .\". |  |'|   |-.|    ||      | \n"
+                 " |   |       | | | |    |  |                  | | |  | |   |  |    ||      |-- \n"
+                 " |   |       |/   \\|    |  |                  | | |  | |   |  |    ||      |  . \n";
+    for (int i = 0; i <= 15; i++) {
+        gotoXY(Data.x - 9, Data.y + i - 1);
         std::cout << MainMenu[i];
     }
 }
+
 std::string MainMenuStr[] = {"Tiep Tuc", "Choi Moi", "Cai Dat", "Giup Do", "Tac Gia", ""};
+
 int menuHandle(drawData Data) {
-    char ch;
+    int ch;
     int index = 0;
     int pointY = Data.y + 5;
-    gotoXY(Data.x-8, pointY);
-    SetConsoleTextAttribute(hConsole,FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
+    gotoXY(Data.x - 8, pointY);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                      BACKGROUND_INTENSITY);
     std::cout << " > " << MainMenuStr[0];
     while (true) {
         if (kbhit()) {
@@ -222,38 +225,42 @@ int menuHandle(drawData Data) {
                 pointY -= 2;
                 --index;
                 if (pointY <= Data.y + 3) {
-                    gotoXY(Data.x-8, pointY + 2);
+                    gotoXY(Data.x - 8, pointY + 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index + 1] << "  ";
                     index = 4;
                     pointY = Data.y + 13;
                 }
-                gotoXY(Data.x-8, pointY + 2);
+                gotoXY(Data.x - 8, pointY + 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 std::cout << " " << MainMenuStr[index + 1] << "  ";
-                gotoXY(Data.x-8, pointY);
-                SetConsoleTextAttribute(hConsole,FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
+                gotoXY(Data.x - 8, pointY);
+                SetConsoleTextAttribute(hConsole,
+                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                        BACKGROUND_INTENSITY);
                 std::cout << " > " << MainMenuStr[index];
             }
             if (ch == KEY_DOWN) {
                 pointY += 2;
                 ++index;
                 if (pointY >= Data.y + 15) {
-                    gotoXY(Data.x-8, pointY - 2);
+                    gotoXY(Data.x - 8, pointY - 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index - 1] << "  ";
                     index = 0;
                     pointY = Data.y + 5;
                 }
-                gotoXY(Data.x-8, pointY - 2);
+                gotoXY(Data.x - 8, pointY - 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 std::cout << " " << MainMenuStr[index - 1] << "  ";
-                gotoXY(Data.x-8, pointY);
-                SetConsoleTextAttribute(hConsole,FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
+                gotoXY(Data.x - 8, pointY);
+                SetConsoleTextAttribute(hConsole,
+                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                        BACKGROUND_INTENSITY);
                 std::cout << " > " << MainMenuStr[index];
             }
             if (ch == KEY_ENTER) {
-                gotoXY(Data.x-8, Data.y + 5 + index * 2);
+                gotoXY(Data.x - 8, Data.y + 5 + index * 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 std::cout << "                        ";
                 return index;
@@ -286,25 +293,25 @@ void SetWindowSize(SHORT width, SHORT height) {
 
 void inKhung(int width, int height) {
 
-    for (int i = 1; i<=width; i++ ) {
-      gotoXY(i, 0);
-      std::cout << "─";
-      gotoXY(i, height+1);
-      std::cout << "═";
+    for (int i = 1; i <= width; i++) {
+        gotoXY(i, 0);
+        std::cout << "─";
+        gotoXY(i, height + 1);
+        std::cout << "═";
     }
-    for (int i = 1; i <= height; i++ ){
+    for (int i = 1; i <= height; i++) {
         gotoXY(0, i);
         std::cout << "║";
         gotoXY(79, i);
         std::cout << "║";
     }
-    gotoXY(width+1, 0);
+    gotoXY(width + 1, 0);
     std::cout << "╖";
-    gotoXY(width+1,height+1 );
+    gotoXY(width + 1, height + 1);
     std::cout << "╝";
     gotoXY(0, 0);
     std::cout << "╓";
-    gotoXY(0, height+1);
+    gotoXY(0, height + 1);
     std::cout << "╚";
 }
 

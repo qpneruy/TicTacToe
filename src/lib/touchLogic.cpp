@@ -6,8 +6,10 @@
 #include "include/touchLogic.h"
 
 #include <Windows.h>
+
 int x_, y_;
 bool Pressed = false;
+
 void getPosMouse(posData &data) {
     Pressed = false;
     HANDLE hStdin;
@@ -36,28 +38,30 @@ void getPosMouse(posData &data) {
         }
     }
 }
-int searchNearestPos(const int mapTable[9], int x, int n){
-   for (int i = 0; i<n-1 ; i++ ){
-       if (x > mapTable[i] && x < mapTable[i+1]) {
-           if (x - mapTable[i] == 1) return i;
-           if (mapTable[i+1] - x == 1) return i+1;
-           return -1;
-       }
-   }
-   return -1;
+
+int searchNearestPos(const int mapTable[9], int x, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        if (x > mapTable[i] && x < mapTable[i + 1]) {
+            if (x - mapTable[i] == 1) return i;
+            if (mapTable[i + 1] - x == 1) return i + 1;
+            return -1;
+        }
+    }
+    return -1;
 }
+
 void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y) {
     bool found = false;
-    for (int i = 0; i<drData.width; i++) {
+    for (int i = 0; i < drData.width; i++) {
         if (poData.tableHor[i] == locationData.playerPosX) {
             o_x = i;
             found = true;
         }
     }
-    if (!found) o_x = searchNearestPos(poData.tableHor,  locationData.playerPosX, drData.width);
+    if (!found) o_x = searchNearestPos(poData.tableHor, locationData.playerPosX, drData.width);
     if (o_x != -1) {
         for (int i = 0; i < drData.height; i++) {
-            if (poData.tableVer[i] ==  locationData.playerPosY) {
+            if (poData.tableVer[i] == locationData.playerPosY) {
                 o_y = i;
                 return;
             }
