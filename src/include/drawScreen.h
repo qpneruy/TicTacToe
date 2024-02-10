@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+
 struct drawData {
     int x;
     int y;

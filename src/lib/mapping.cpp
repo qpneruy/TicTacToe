@@ -1,8 +1,6 @@
 //
 // Created by huuti on 003, 03/02/2024.
 //
-#include <windows.h>
-#include <iostream>
 #include "include/mapping.h"
 
 
