@@ -78,8 +78,8 @@ void UserInput(drawData &drData) {
                     break;
                 }
                 if (ch == 13) {
-                    drData.height = height;
-                    drData.width = width;
+                    drData.height = static_cast<char>(height);
+                    drData.width = static_cast<char>(width);
                     End = true;
                     break;
                 }
@@ -100,8 +100,9 @@ void UserInput(drawData &drData) {
             std::cout << "       └---[?]---┘  ";
             while (success) {
                 gotoXY(drData.x, drData.y + 4);
-                getNumber(drData.intWin);
-
+                int intWin;
+                getNumber(intWin);
+                drData.intWin = static_cast<char>(intWin);
                 if (drData.intWin > std::max(drData.width, drData.height)) {
                     gotoXY(drData.x - 12, drData.y + 4);
                     std::cout << "       └---[?]---┘  ";

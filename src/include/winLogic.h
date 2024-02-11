@@ -11,9 +11,13 @@ struct Player {
     int score;
     int time;
 };
-
-bool crossCheck(int intWin, char table[9][9], drawData drawData, char Player);
-
-bool HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player);
+struct TableData {
+    std::pair<short, short> tablePath[9] = {};
+    bool hr = false,
+         vr = false,
+         cL = false,
+         cR = false;
+};
+bool isWin(char table[9][9], drawData drData, char Player);
 
 #endif //TICTACTOEV2_WINLOGIC_H
