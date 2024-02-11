@@ -32,7 +32,7 @@ void LoadGame(drawData drData, posData poData) {
     char table[9][9] = {};
     startMap(drData, poData);
     int px, py;
-    int intWin = 9;
+
 
     gotoXY(0, 0);
     inBanCo(table, drData);
@@ -42,6 +42,10 @@ void LoadGame(drawData drData, posData poData) {
         getPosMouse(poData);
         dacPos(drData, poData, poData, px, py);
         if (px != -1 && py != -1) {
+            gotoXY(5, 21);
+            cout << "                 ";
+            gotoXY(7, 22);
+            cout << "                 ";
             if (drData.opr) {
                 table[py][px] = 'O';
                 gotoXY(71, drData.y + 10);
@@ -56,12 +60,14 @@ void LoadGame(drawData drData, posData poData) {
                 drData.opr = true;
             }
             char currentPlayer = drData.xpr ? 'O' : 'X';
-            if (crossCheck(intWin, table, drData, currentPlayer) ||
-            HorVerCheck(intWin, table, drData, currentPlayer)) {
+            if (isWin(table, drData, currentPlayer)) {
                 // win logic
                 break;
             }
             inBanCo(table, drData);
+            cout << px << " " << py;
+        } else {
+            ThongBao();
         }
 
     }
@@ -72,17 +78,21 @@ int main() {
     posData poData;
     Player Oplayer{};
     Player Xplayer{};
-
     drawData.x = 40;
     drawData.y = 11;
+//    drawData.height = 9;
+//    drawData.width = 9;
+//    drawData.xpr = true;
+//    drawData.intWin = 9;
+
     init_(drawData, poData);
     switch (menuHandle(drawData)) {
         case 0:
-            UserInput(drawData);
-            LoadGame(drawData, poData);
+
             break;
         case 1:
-
+            UserInput(drawData);
+            LoadGame(drawData, poData);
             break;
         case 2:
             break;

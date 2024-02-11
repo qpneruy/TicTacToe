@@ -320,3 +320,10 @@ int getASCIINumber() {
         if (kbhit()) return getch();
     }
 }
+
+void ThongBao() {
+    gotoXY(5, 21);
+    std::cout << "Vi Tri Khong";
+    gotoXY(7, 22);
+    std::cout << "Hop Le!";
+}

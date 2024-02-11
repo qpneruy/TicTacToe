@@ -70,5 +70,10 @@ void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int
     o_y = -1;
 
 }
-
+bool SyntaxCheck(char table[9][9], posData poData) {
+    if (table[poData.playerPosY][poData.playerPosX] != 'X' && table[poData.playerPosY][poData.playerPosX] != 'O'){
+        return true;
+    }
+    return false;
+}
 
