@@ -8,7 +8,7 @@
 #include "include/drawScreen.h"
 
 struct posData {
-    int tableHor[9] = {};
+    int tableHor[10] = {};
     int tableVer[10] = {};
     int playerPosX = 0;
     int playerPosY = 0;

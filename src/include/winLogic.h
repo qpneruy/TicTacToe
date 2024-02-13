@@ -12,7 +12,8 @@ struct Player {
     int time;
 };
 struct TableData {
-    std::pair<short, short> tablePath[9] = {};
+    std::pair<int, int> tablePath_R[9] = {};
+    std::pair<int, int> tablePath_L[9] = {};
     bool hr = false,
          vr = false,
          cL = false,

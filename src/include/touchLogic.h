@@ -11,6 +11,6 @@ void getPosMouse(posData &data);
 
 void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y);
 
-bool SyntaxCheck(char table[9][9], posData poData);
+bool SyntaxCheck(char table[9][9], int y, int x);
 
 #endif //TICTACTOEV2_TOUCHLOGIC_H

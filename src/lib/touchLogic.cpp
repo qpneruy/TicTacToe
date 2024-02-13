@@ -40,7 +40,7 @@ void getPosMouse(posData &data) {
 }
 
 int searchNearestPos(const int mapTable[9], int x, int n) {
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n; i++) {
         if (x > mapTable[i] && x < mapTable[i + 1]) {
             if (x - mapTable[i] == 1) return i;
             if (mapTable[i + 1] - x == 1) return i + 1;
@@ -51,14 +51,21 @@ int searchNearestPos(const int mapTable[9], int x, int n) {
 }
 
 void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y) {
-    bool found = false;
-    for (int i = 0; i < drData.width; i++) {
-        if (poData.tableHor[i] == locationData.playerPosX) {
-            o_x = i;
-            found = true;
+    bool found_1 = false, found_2 = false;
+    if (locationData.playerPosX == poData.tableHor[0] - 1) {
+        o_x = 0;
+        found_1 = true;
+        found_2 = true;
+    }
+    if (!found_1) {
+        for (int i = 0; i <= drData.width; i++) {
+            if (poData.tableHor[i] == locationData.playerPosX) {
+                o_x = i;
+                found_2 = true;
+            }
         }
     }
-    if (!found) o_x = searchNearestPos(poData.tableHor, locationData.playerPosX, drData.width);
+    if (!found_2) o_x = searchNearestPos(poData.tableHor, locationData.playerPosX, drData.width);
     if (o_x != -1) {
         for (int i = 0; i < drData.height; i++) {
             if (poData.tableVer[i] == locationData.playerPosY) {
@@ -70,8 +77,8 @@ void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int
     o_y = -1;
 
 }
-bool SyntaxCheck(char table[9][9], posData poData) {
-    if (table[poData.playerPosY][poData.playerPosX] != 'X' && table[poData.playerPosY][poData.playerPosX] != 'O'){
+bool SyntaxCheck(char table[9][9], int y, int x) {
+    if (table[y][x] != 'X' && table[y][x] != 'O'){
         return true;
     }
     return false;
