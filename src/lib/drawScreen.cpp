@@ -68,7 +68,7 @@ void inBanCo(char tableData[9][9], drawData data) {
         if (i != data.height) {
             std::cout << "  ";
             for (int j = 0; j < data.width; j++) {
-                if (tableData[i][j] == 'X' || tableData[i][j] == 'O') { std::cout << "| " << tableData[i][j] << " "; }
+                if (tableData[i][j] != ' ') { std::cout << "| " << tableData[i][j] << " "; }
                 else {
                     std::cout << "|   ";
                 } // (1): | .. | .. | .. | ...
