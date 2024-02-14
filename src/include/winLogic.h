@@ -12,12 +12,8 @@ struct Player {
     int time;
 };
 struct TableData {
-    std::pair<int, int> tablePath_R[9] = {};
-    std::pair<int, int> tablePath_L[9] = {};
-    bool hr = false,
-         vr = false,
-         cL = false,
-         cR = false;
+    std::pair<int, int> tablePath_R[10] = {};
+    std::pair<int, int> tablePath_L[10] = {}; // ??????
 };
 bool isWin(char table[9][9], drawData drData, char Player);
 
