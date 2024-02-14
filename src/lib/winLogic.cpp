@@ -34,9 +34,9 @@ char crossCheck(char intWin, char table[9][9], drawData drawData, char Player) {
 }
 
 char HorVerCheck(char intWin, char table[9][9], drawData drawData, char Player) {
-    int HorCount = 0;
-    int VerCount = 0;
+    int HorCount = 0, VerCount = 0;
     for (int i = 0; i < drawData.height; i++) {
+        HorCount = 0;
         for (int j = 0; j < drawData.width; j++) {
             if (table[i][j] == Player) {
                 HorCount++;
@@ -50,7 +50,8 @@ char HorVerCheck(char intWin, char table[9][9], drawData drawData, char Player) 
             } else VerCount = 0;
             if (HorCount >= intWin ) {
                 return 1;
-            } else if (VerCount >= intWin) {
+            }
+            if (VerCount >= intWin) {
                 return 2;
             }
         }
@@ -59,22 +60,39 @@ char HorVerCheck(char intWin, char table[9][9], drawData drawData, char Player) 
 }
 
 bool isWin(char table[9][9], drawData drData, char Player) {
-    char OresHV = HorVerCheck(drData.intWin, table, drData, Player);
-    if (OresHV == 1) tableData.hr = true; else if (OresHV == 2) tableData.vr = true;
-    if (OresHV != -1) {
-        for (int i = 1; i<=drData.intWin; i++) {
-            if (tableData.hr) {
+    char OresHV = HorVerCheck(drData.intWin, table, drData, Player);;
+    if (OresHV == 1) {
+        for (int i = 1; i <= drData.intWin; i++) {
             table[tableData.tablePath_R[i].first][tableData.tablePath_R[i].second] = '=';
-            }
-            if (tableData.vr) {
-                table[tableData.tablePath_L[i].first][tableData.tablePath_L[i].second] = '|';
-            }
         }
+    }
+    if (OresHV == 2) {
+        for (int i = 1; i <= drData.intWin; i++) {
+            table[tableData.tablePath_L[i].second][tableData.tablePath_L[i].first] = '|';
+        }
+    }
+    if (OresHV != -1) {
+        inBanCo(table, drData);
         return true;
     }
-    char OresRL = crossCheck(drData.intWin, table, drData, Player);
-    if (OresRL == 1) tableData.cL = true; else if (OresRL == 2) tableData.cR = true;
-    if (OresRL != -1) return true;
-
+//    char OresRL = crossCheck(drData.intWin, table, drData, Player);
+//    if (OresRL == 1) { tableData.cL = true; }
+//    if (OresRL == 2) { tableData.cR = true; }
+//    if (OresRL != -1) {
+//        if (tableData.cL) {
+//            for (int i = 1; i <= drData.intWin; i++) {
+//                table[tableData.tablePath_R[i].second][tableData.tablePath_R[i].first] = '=';
+//                std::cout << tableData.tablePath_R[i].first << " " << tableData.tablePath_R[i].second << " \n";
+//            }
+//
+//        } else if (tableData.cR) {
+//            for (int i = 1; i <= drData.intWin; i++) {
+//                table[tableData.tablePath_L[i].second][tableData.tablePath_L[i].first] = '|';
+//                std::cout << tableData.tablePath_L[i].first << " " << tableData.tablePath_L[i].second << " \n";
+//            }
+//        }
+//        inBanCo(table, drData);
+//        return true;
+//    }
     return false;
 }

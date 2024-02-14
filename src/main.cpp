@@ -57,11 +57,12 @@ void LoadGame(drawData drData, posData poData) {
 //                drData.opr = true;
 //            }
 //            char currentPlayer = drData.xpr ? 'O' : 'X';
+            inBanCo(table, drData);
             if (isWin(table, drData, 'X')) {
-                inBanCo(table, drData);
+//                inBanCo(table, drData);
                 break;
             }
-            inBanCo(table, drData);
+
         } else {
             ThongBao();
         }
