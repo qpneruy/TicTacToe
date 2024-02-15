@@ -77,10 +77,10 @@ int main() {
     Player Xplayer{};
     drData.x = 40;
     drData.y = 11;
-    drData.height = 9;
-    drData.width = 9;
+    drData.height = 3;
+    drData.width = 3;
     drData.xpr = true;
-    drData.intWin = 9;
+    drData.intWin = 3;
 
     init_(drData, poData);
     startMap(drData, poData);
