@@ -22,6 +22,7 @@ using namespace std;
 void init_(drawData drData, posData &poData) {
     SetWindowSize(95, 34);
     inLogo();
+    inMenuChinh(drData);
     inKhung(78, 34);
 }
 
@@ -36,30 +37,30 @@ void LoadGame(drawData drData, posData poData) {
     inBangThoiGian(drData, 0, 0);
     while (true) {
         getPosMouse(poData);
-        cout << poData.playerPosX << " " << poData.playerPosY;
+//        cout << poData.playerPosX << " " << poData.playerPosY;
         dacPos(drData, poData, poData, px, py);
         if (px != -1 && py != -1 && SyntaxCheck(table, py, px)) {
             gotoXY(5, 21);
             cout << "                 ";
             gotoXY(7, 22);
             cout << "                 ";
-//            if (drData.opr) {
-//                table[py][px] = 'O';
-//                gotoXY(71, drData.y + 10);
-//                cout << 'X';
-//                drData.opr = false;
-//                drData.xpr = true;
-//            } else if (drData.xpr) {
+            if (drData.opr) {
+                table[py][px] = 'O';
+                gotoXY(71, drData.y + 10);
+                cout << 'X';
+                drData.opr = false;
+                drData.xpr = true;
+            } else if (drData.xpr) {
                 table[py][px] = 'X';
                 gotoXY(71, drData.y + 10);
                 cout << 'O';
-//                drData.xpr = false;
-//                drData.opr = true;
-//            }
-//            char currentPlayer = drData.xpr ? 'O' : 'X';
+                drData.xpr = false;
+                drData.opr = true;
+            }
+            char currentPlayer = drData.xpr ? 'O' : 'X';
             inBanCo(table, drData);
             if (isWin(table, drData, 'X')) {
-//                inBanCo(table, drData);
+                inBanCo(table, drData);
                 break;
             }
 
@@ -77,37 +78,27 @@ int main() {
     Player Xplayer{};
     drData.x = 40;
     drData.y = 11;
-    drData.height = 3;
-    drData.width = 3;
+    drData.height = 9;
+    drData.width = 9;
     drData.xpr = true;
-    drData.intWin = 3;
+    drData.intWin = 9;
 
     init_(drData, poData);
     startMap(drData, poData);
-//    gotoXY(0, 0);
-//    for (int i = 0; i <= drData.width; i++) {
-//        std::cout << poData.tableHor[i] << " ";
-//    }
-//    cout << "\n";
-//    for (int i = 0; i <= drData.width; i++) {
-//        std::cout << poData.tableVer[i] << " ";
-//    }
-    LoadGame(drData, poData);
-//    switch (menuHandle(drawData)) {
-//        case 0:
-//
-//            break;
-//        case 1:
-//            UserInput(drawData);
-//
-//            break;
-//        case 2:
-//            break;
-//        case 3:
-//            break;
-//        case 4:
-//            break;
-//    }
+    switch (menuHandle(drData)) {
+        case 0:
+            break;
+        case 1:
+            UserInput(drData);
+            LoadGame(drData, poData);
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+    }
     while (true) {
 
     }
