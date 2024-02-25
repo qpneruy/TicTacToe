@@ -10,8 +10,8 @@
 struct posData {
     int tableHor[10] = {};
     int tableVer[10] = {};
-    int playerPosX = 0;
-    int playerPosY = 0;
+    char playerPosX = 0;
+    char playerPosY = 0;
 };
 
 void startMap(drawData data, posData &pdata);
