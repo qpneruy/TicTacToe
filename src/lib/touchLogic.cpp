@@ -52,6 +52,13 @@ int searchNearestPos(const int mapTable[9], int x, int n) {
 
 void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y) {
     bool found_1 = false, found_2 = false;
+    std::cout << locationData.playerPosX;
+    if (drData.x + (drData.width * 4 / 2)+1 == locationData.playerPosX || drData.x + (drData.width * 4 / 2)+2 == locationData.playerPosX  ) {
+        o_x = -1;
+        o_y = -1;
+        found_1 = true;
+        found_2 = true;
+    }
     if (locationData.playerPosX == poData.tableHor[0] - 1) {
         o_x = 0;
         found_1 = true;

@@ -7,37 +7,13 @@
 
 void getNumber(int &x) {
     x = getASCIINumber() - 48;
-    std::cout << x;
 }
 void UserInput(drawData &drData) {
     int width, height, ch;
     bool ThisIsRealEndTrustMe = false;
     clearScreen();
     gotoXY(0, drData.y);
-    std::cout << "                                                                                \n"
-                 "                                                                                \n"
-                 "                                                                                \n"
-                 "                                                                                \n"
-                 "       .''.      .                                                              \n"
-                 "      :_\\/_:   _\\(/_  .:.                                                     \n"
-                 "  .''.: /\\ :/   ./)\\   ':'                                     .''.           \n"
-                 "  :_\\/_:'.:::.  /  .*''*                              *''*    :_\\/_:     .    \n"
-                 "  : /\\ : ::::: /   *_\\/_*/                           *_\\/_*   : /\\ :  .'.:.'. \n"
-                 "  \\'..'  ':::'    \\* /\\ *                            * /\\ * :  '..'.  -=:o:=- \n"
-                 "       *           \\*..*                               * '.\\'/.' _\\(/_'.':'.' \n"
-                 "        *             *                                    -= o =-  /)\\    '   \n"
-                 "        *             *                                       *            *    \n"
-                 "       *             *                                        *            *    \n"
-                 "       *        |   *                                          *           *    \n"
-                 "  _  *          =   *                                          *         *     \n"
-                 " | |..         ===  *                                       ' ._____     *     \n"
-                 " |    |         |    *                                        |.   |' .---\"|   \n"
-                 " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
-                 " |    |   .     |  .-'|                            __  |   |  |    ||      |   \n"
-                 " |    .-----. . |  |' |  ||                  ' |  |  | |   |  |    ||      |    \n"
-                 " |  .'  | |  './\"\\ |  '-.\"\".      -2024-      .\". |  |'|   |-.|    ||      | \n"
-                 " |   |       | | | |    |  |                  | | |  | |   |  |    ||      |-- \n"
-                 " |   |       |/   \\|    |  |                  | | |  | |   |  |    ||      |  . \n";
+    inBackGround(drData);
     inLogo();
     inKhung(78, 34);
     gotoXY(drData.x - 13, drData.y - 1);
@@ -49,23 +25,23 @@ void UserInput(drawData &drData) {
     while(!ThisIsRealEndTrustMe) {
         bool End = false;
         while (!End) {
+            bool isRwidth = false;
             bool success = true;
             while (success) {
-                gotoXY(drData.x - 3, drData.y + 1);
-                getNumber(width);
-                gotoXY(drData.x + 3, drData.y + 1);
-                getNumber(height);
-                if (width <= 9 && height <= 9 && width > 1 && height > 1) {
-                    success = false;
-                } else {
-                    gotoXY(drData.x - 16, drData.y + 2);
-                    std::cout << "KICH THUOC KHONG HOP LE!, Nhap Lai.";
-                    Sleep(1500);
-                    gotoXY(drData.x - 16, drData.y + 2);
-                    std::cout << "                                    ";
-                    gotoXY(drData.x - 11, drData.y + 1);
-                    std::cout << "   └---[?] x [?]---┘      ";
+                if (!isRwidth) {
+                    gotoXY(drData.x - 3, drData.y + 1);
+                    getNumber(width);
                 }
+                if (width > 1 && width <= 9) {
+                    if (!isRwidth) std::cout << width;
+                    isRwidth = true;
+                    gotoXY(drData.x + 3, drData.y + 1);
+                    getNumber(height);
+                    if (height > 1 && height <= 9) {
+                        std::cout << height;
+                        success = false;
+                    }
+               }
             }
             while (true) {
                 ch = getch();
@@ -102,16 +78,15 @@ void UserInput(drawData &drData) {
                 gotoXY(drData.x, drData.y + 4);
                 int intWin;
                 getNumber(intWin);
-                drData.intWin = static_cast<char>(intWin);
-                if (drData.intWin > std::max(drData.width, drData.height)) {
+                if (intWin <= std::max(height, width) && intWin > 1) {
+                    success = false;
+                    std::cout << intWin;
+                    drData.intWin = static_cast<char>(intWin);
+                } else {
                     gotoXY(drData.x - 12, drData.y + 4);
                     std::cout << "       └---[?]---┘  ";
                     gotoXY(drData.x - 12, drData.y + 5);
-                    std::cout << "SO DAU KHONG HOP LE!, Nhap Lai.";
-                    Sleep(1500);
-                    gotoXY(drData.x - 12, drData.y + 5);
-                    std::cout << "                                ";
-                } else success = false;
+                }
             }
             while (true) {
                 ch = getch();
@@ -165,4 +140,5 @@ void UserInput(drawData &drData) {
             }
         }
     }
+    clearScreen();
 }

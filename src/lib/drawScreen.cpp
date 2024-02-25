@@ -175,8 +175,7 @@ std::string MainMenu[] = {"╿           ╿\n",
                           "║           ║\n",
                           "║ Tac Gia   ║\n",
                           "╚═══════════╝\n"};
-
-void inMenuChinh(drawData Data) {
+void inBackGround(drawData Data) {
     gotoXY(0, Data.y);
     std::cout << "                                                                                \n"
                  "                                                                                \n"
@@ -202,6 +201,8 @@ void inMenuChinh(drawData Data) {
                  " |  .'  | |  './\"\\ |  '-.\"\".        -2024-        .\". '|   |-.|    ||      | \n"
                  " |   |       | | | |    |  |                      | |  |   |  |    ||      |-- \n"
                  " |   |       |/   \\|    |  |                      | |  |   |  |    ||      |  . \n";
+}
+void inMenuChinh(drawData Data) {
     for (int i = 0; i <= 15; i++) {
         gotoXY(Data.x - 8, Data.y + i - 1);
         std::cout << MainMenu[i];
@@ -292,7 +293,6 @@ void SetWindowSize(SHORT width, SHORT height) {
 }
 
 void inKhung(int width, int height) {
-
     for (int i = 1; i <= width; i++) {
         gotoXY(i, 0);
         std::cout << "─";

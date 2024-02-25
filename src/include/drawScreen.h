@@ -40,6 +40,8 @@ int getASCIINumber();
 
 void clearScreen();
 
+void inBackGround(drawData Data);
+
 void printInfo();
 
 void inLogo();

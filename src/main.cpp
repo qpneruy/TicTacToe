@@ -22,6 +22,7 @@ using namespace std;
 void init_(drawData drData, posData &poData) {
     SetWindowSize(95, 34);
     inLogo();
+    inBackGround(drData);
     inMenuChinh(drData);
     inKhung(78, 34);
 }
@@ -32,6 +33,9 @@ void LoadGame(drawData drData, posData poData) {
     startMap(drData, poData);
     int px, py;
     gotoXY(0, 0);
+    inLogo();
+    inBackGround(drData);
+    inKhung(78, 34);
     inBanCo(table, drData);
     inBangDiem(drData, 0, 0);
     inBangThoiGian(drData, 0, 0);
@@ -44,22 +48,22 @@ void LoadGame(drawData drData, posData poData) {
             cout << "                 ";
             gotoXY(7, 22);
             cout << "                 ";
-            if (drData.opr) {
+//            if (drData.opr) {
                 table[py][px] = 'O';
                 gotoXY(71, drData.y + 10);
                 cout << 'X';
-                drData.opr = false;
-                drData.xpr = true;
-            } else if (drData.xpr) {
-                table[py][px] = 'X';
-                gotoXY(71, drData.y + 10);
-                cout << 'O';
-                drData.xpr = false;
-                drData.opr = true;
-            }
+//                drData.opr = false;
+//                drData.xpr = true;
+//            } else if (drData.xpr) {
+//                table[py][px] = 'X';
+//                gotoXY(71, drData.y + 10);
+//                cout << 'O';
+//                drData.xpr = false;
+//                drData.opr = true;
+//            }
             char currentPlayer = drData.xpr ? 'O' : 'X';
             inBanCo(table, drData);
-            if (isWin(table, drData, 'X')) {
+            if (isWin(table, drData, currentPlayer)) {
                 inBanCo(table, drData);
                 break;
             }
@@ -72,6 +76,8 @@ void LoadGame(drawData drData, posData poData) {
 }
 
 int main() {
+//    ios_base::sync_with_stdio(false);
+    cout.tie(nullptr);
     drawData drData{};
     posData poData;
     Player Oplayer{};
