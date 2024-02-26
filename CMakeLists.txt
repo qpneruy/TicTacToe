@@ -15,6 +15,8 @@ add_executable(TicTacToev2
         src/include/mapping.h
         src/lib/touchLogic.cpp
         src/include/touchLogic.h
-        src/lib/dataInput.cpp
+        src/dataInput.cpp
         src/include/dataInput.h
+        src/lib/archive.cpp
+        src/include/archive.h
 )

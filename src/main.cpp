@@ -16,6 +16,7 @@
 #include "include/winLogic.h"
 #include "include/mapping.h"
 #include "include/touchLogic.h"
+#include "include/archive.h"
 #include "include/dataInput.h"
 #include <Windows.h>
 using namespace std;
@@ -74,37 +75,46 @@ void LoadGame(drawData drData, posData poData) {
 
     }
 }
-
+std::sort();
 int main() {
 //    ios_base::sync_with_stdio(false);
-    cout.tie(nullptr);
+//    cout.tie(nullptr);
     drawData drData{};
     posData poData;
     Player Oplayer{};
     Player Xplayer{};
+    string  table[9][9] = {};
+    table[0][1] = "X";
+    table[0][2] = "O";
+    table[1][2] = "X";
+    table[2][2] = "O";
+    leaderboard ldpo;
+    leaderboard ldpx;
     drData.x = 40;
     drData.y = 11;
     drData.height = 9;
     drData.width = 9;
     drData.xpr = true;
     drData.intWin = 9;
-
-    init_(drData, poData);
-    startMap(drData, poData);
-    switch (menuHandle(drData)) {
-        case 0:
-            break;
-        case 1:
-            UserInput(drData);
-            LoadGame(drData, poData);
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-    }
+    ldpx.add_player("huutinh", 100);
+save(table, drData, Oplayer, Xplayer, ldpx, ldpo);
+    load(table, drData, Oplayer, Xplayer, ldpx, ldpo);
+//    init_(drData, poData);
+//    startMap(drData, poData);
+//    switch (menuHandle(drData)) {
+//        case 0:
+//            break;
+//        case 1:
+//            UserInput(drData);
+//            LoadGame(drData, poData);
+//            break;
+//        case 2:
+//            break;
+//        case 3:
+//            break;
+//        case 4:
+//            break;
+//    }
     while (true) {
 
     }

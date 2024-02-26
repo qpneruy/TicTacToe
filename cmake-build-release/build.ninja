@@ -84,8 +84,15 @@ build CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj: CXX_COMPILER__TicTa
   OBJECT_DIR = CMakeFiles\TicTacToev2.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src\lib
 
-build CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/dataInput.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\dataInput.cpp.obj.d
+build CMakeFiles/TicTacToev2.dir/src/dataInput.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Release D$:/Project/CSharp/TicTacToe/src/dataInput.cpp || cmake_object_order_depends_target_TicTacToev2
+  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\dataInput.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -ID:/Project/CSharp/TicTacToe/src
+  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src
+
+build CMakeFiles/TicTacToev2.dir/src/lib/archive.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/archive.cpp || cmake_object_order_depends_target_TicTacToev2
+  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\archive.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToev2.dir
@@ -99,7 +106,7 @@ build CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj: CXX_COMPILER__TicTac
 #############################################
 # Link the executable TicTacToev2.exe
 
-build TicTacToev2.exe: CXX_EXECUTABLE_LINKER__TicTacToev2_Release CMakeFiles/TicTacToev2.dir/src/main.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj
+build TicTacToev2.exe: CXX_EXECUTABLE_LINKER__TicTacToev2_Release CMakeFiles/TicTacToev2.dir/src/main.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj CMakeFiles/TicTacToev2.dir/src/dataInput.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/archive.cpp.obj
   FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TicTacToev2.dir

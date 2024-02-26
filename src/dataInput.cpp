@@ -2,7 +2,7 @@
 // Created by huuti on 010, 10/02/2024.
 //
 #include <conio.h>
-#include <Windows.h>
+#include <windows.h>
 #include "include/dataInput.h"
 
 void getNumber(int &x) {
