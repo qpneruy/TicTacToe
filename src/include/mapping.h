@@ -6,7 +6,6 @@
 #define TICTACTOEV2_MAPPING_H
 
 #include "include/drawScreen.h"
-
 struct posData {
     int tableHor[10] = {};
     int tableVer[10] = {};

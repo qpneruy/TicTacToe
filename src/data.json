@@ -5,7 +5,7 @@
         "grid": [
             [
                 "",
-                "X",
+                "O",
                 "O",
                 "",
                 "",
@@ -111,12 +111,16 @@
     },
     "leaderBoard": {
         "O": [
-            "None"
+            {
+                "name": "huutinh",
+                "score": 120,
+                "top": "1"
+            }
         ],
         "X": [
             {
-                "player": "huutinh",
-                "score": 100,
+                "name": "huutinh",
+                "score": 120,
                 "top": "1"
             }
         ]

@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.27)
-project(TicTacToev2)
+project(TicTacToe)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(src)
 
-add_executable(TicTacToev2
+add_executable(TicTacToe
         src/main.cpp
         src/lib/drawScreen.cpp
         src/include/drawScreen.h
@@ -15,8 +15,10 @@ add_executable(TicTacToev2
         src/include/mapping.h
         src/lib/touchLogic.cpp
         src/include/touchLogic.h
-        src/dataInput.cpp
+        src/lib/dataInput.cpp
         src/include/dataInput.h
         src/lib/archive.cpp
         src/include/archive.h
+        src/lib/loadGame.cpp
+        src/include/loadGame.h
 )

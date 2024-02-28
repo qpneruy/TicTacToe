@@ -9,13 +9,13 @@
 #include <iostream>
 
 struct drawData {
-    char x{},
+    int x{},
         y{},
         width{},
-        height{};
+        height{},
+        intWin{};
     bool opr = false,
          xpr = false;
-    char intWin{};
 };
 
 void inBanCo(char tableData[9][9], drawData data);
@@ -25,6 +25,8 @@ void inBangDiem(drawData data, short Oscore, short Xscore);
 void SetWindowSize(short width, short height);
 
 void inBangThoiGian(drawData drData, int XTime, int OTime);
+
+void inBangXepHang(drawData drData);
 
 void ThongBao();
 
@@ -40,9 +42,8 @@ int getASCIINumber();
 
 void clearScreen();
 
-void inBackGround(drawData Data);
 
-void printInfo();
+void inBackGround(drawData Data);
 
 void inLogo();
 

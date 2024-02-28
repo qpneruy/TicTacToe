@@ -3,7 +3,7 @@
 //
 
 #ifndef TICTACTOEV2_DATAINPUT_H
-#define TICTACTOEVd2_DATAINPUT_H
+#define TICTACTOEV2_DATAINPUT_H
 #include "drawScreen.h"
 #include "mapping.h"
 

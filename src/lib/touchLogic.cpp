@@ -50,32 +50,32 @@ int searchNearestPos(const int mapTable[9], int x, int n) {
     return -1;
 }
 
-void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y) {
+void dacPos(const gameData& gdata, int &o_x, int &o_y) {
     bool found_1 = false, found_2 = false;
-    std::cout << locationData.playerPosX;
-    if (drData.x + (drData.width * 4 / 2)+1 == locationData.playerPosX || drData.x + (drData.width * 4 / 2)+2 == locationData.playerPosX  ) {
+    std::cout << gdata.poData.playerPosX;
+    if (gdata.drData.x + (gdata.drData.width * 4 / 2)+1 == gdata.poData.playerPosX || gdata.drData.x + (gdata.drData.width * 4 / 2)+2 == gdata.poData.playerPosX  ) {
         o_x = -1;
         o_y = -1;
         found_1 = true;
         found_2 = true;
     }
-    if (locationData.playerPosX == poData.tableHor[0] - 1) {
+    if (gdata.poData.playerPosX == gdata.poData.tableHor[0] - 1) {
         o_x = 0;
         found_1 = true;
         found_2 = true;
     }
     if (!found_1) {
-        for (int i = 0; i <= drData.width; i++) {
-            if (poData.tableHor[i] == locationData.playerPosX) {
+        for (int i = 0; i <= gdata.drData.width; i++) {
+            if (gdata.poData.tableHor[i] == gdata.poData.playerPosX) {
                 o_x = i;
                 found_2 = true;
             }
         }
     }
-    if (!found_2) o_x = searchNearestPos(poData.tableHor, locationData.playerPosX, drData.width);
+    if (!found_2) o_x = searchNearestPos(gdata.poData.tableHor, gdata.poData.playerPosX, gdata.drData.width);
     if (o_x != -1) {
-        for (int i = 0; i < drData.height; i++) {
-            if (poData.tableVer[i] == locationData.playerPosY) {
+        for (int i = 0; i < gdata.drData.height; i++) {
+            if (gdata.poData.tableVer[i] == gdata.poData.playerPosY) {
                 o_y = i;
                 return;
             }

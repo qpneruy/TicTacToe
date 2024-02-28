@@ -8,7 +8,9 @@
 
 #include "drawScreen.h"
 #include "winLogic.h"
+#include "mapping.h"
 #include <set>
+
 struct CompareScore {
     bool operator()(const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) const {
         return a.second > b.second;
@@ -19,9 +21,17 @@ public:
     std::set<std::pair<std::string, int>, CompareScore> leaderboardData;
     void add_player(const std::string& Name, int score);
 };
+struct gameData {
+    std::string table[9][9] = {};
+    drawData drData;
+    Player X{}, O{};
+    posData poData;
+    leaderboard X_ld, O_ld;
+    bool Music = false;
+};
 
-int save(std::string table[9][9], drawData drData, Player plX, Player plO, const leaderboard& X_ld, const leaderboard& O_ld);
-int load(std::string table[9][9], drawData &drData, Player &plX, Player &plO, const leaderboard& X_ld, const leaderboard& O_ld);
+void save(const gameData& Data);
+gameData load();
 
 
 #endif //TICTACTOEV2_ARCHIVE_H

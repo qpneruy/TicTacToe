@@ -6,10 +6,11 @@
 #define TICTACTOEV2_TOUCHLOGIC_H
 
 #include "include/mapping.h"
+#include "archive.h"
 
 void getPosMouse(posData &data);
 
-void dacPos(drawData drData, posData poData, posData locationData, int &o_x, int &o_y);
+void dacPos(const gameData& gdata, int &o_x, int &o_y);
 
 bool SyntaxCheck(char table[9][9], int y, int x);
 

@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <conio.h>
 #include "include/drawScreen.h"
+#include "include/archive.h"
 
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -171,7 +172,7 @@ std::string MainMenu[] = {"╿           ╿\n",
                           "║           ║\n",
                           "║ Cai Dat   ║\n",
                           "║           ║\n",
-                          "║ Giup Do   ║\n",
+                          "║ Xep Hang  ║\n",
                           "║           ║\n",
                           "║ Tac Gia   ║\n",
                           "╚═══════════╝\n"};
@@ -209,7 +210,7 @@ void inMenuChinh(drawData Data) {
     }
 }
 
-std::string MainMenuStr[] = {"Tiep Tuc", "Choi Moi", "Cai Dat", "Giup Do", "Tac Gia", ""};
+std::string MainMenuStr[] = {"Tiep Tuc", "Choi Moi", "Cai Dat", "Xep Hang", "Tac Gia", ""};
 
 int menuHandle(drawData Data) {
     int ch;
@@ -326,4 +327,59 @@ void ThongBao() {
     std::cout << "Vi Tri Khong";
     gotoXY(7, 22);
     std::cout << "Hop Le!";
+}
+std::string BucXepHang[6] = {    "",
+                              "       ┌───────┐",
+                              "┌──────|   1   |       ",
+                              "|  2   |       |──────┐",
+                              "|      |       |   3  |",
+                              "───────────────────────"};
+std::string BangXepHang[15] {
+    "",
+    "____________________",
+    " Top    Ten      Diem",
+    "  1.  ____        _",
+    "  2.  ____        _",
+    "  3.  ____        _",
+    "  4.  ____        _",
+    "  5.  ____        _",
+    "  6.  ____        _",
+    "  7.  ____        _",
+    "  8.  ____        _",
+    "  9.  ____        _",
+    "  10. ____        _"};
+std::string leaderboardSign[15] {
+    "",
+    "╿               ╿",
+      "├───────────────┤",
+      "| Bang Xep Hang |",
+      "└───────────────┘",
+};
+void inBangXepHang(drawData drData) {
+    int yPos = drData.y-1;
+    gotoXY(drData.x - 10, yPos);
+    for (const auto & i : leaderboardSign) {
+        std::cout << i;
+        gotoXY(drData.x - 10, yPos);
+        yPos +=1;
+    }
+    yPos = drData.y + 20;
+    gotoXY(drData.x - 10, yPos);
+    for (const auto & i : BucXepHang) {
+        std::cout << i;
+        gotoXY(drData.x - 12, yPos);
+        yPos += 1;
+    }
+    yPos = drData.y + 5;
+    for (const auto & i : BangXepHang) {
+        std::cout<< i;
+        gotoXY(drData.x - 38, yPos);
+        yPos +=1;
+    }
+    yPos = drData.y + 5;
+    for (const auto & i : BangXepHang) {
+        std::cout<< i;
+        gotoXY(drData.x + 16, yPos);
+        yPos +=1;
+    }
 }

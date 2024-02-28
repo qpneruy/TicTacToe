@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: TicTacToev2
+# Project: TicTacToe
 # Configurations: Debug
 # =============================================================================
 
@@ -41,73 +41,87 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = D$:/Project/CSharp/TicTacToe/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target TicTacToev2
+# Object build statements for EXECUTABLE target TicTacToe
 
 
 #############################################
-# Order-only phony target for TicTacToev2
+# Order-only phony target for TicTacToe
 
-build cmake_object_order_depends_target_TicTacToev2: phony || CMakeFiles/TicTacToev2.dir
+build cmake_object_order_depends_target_TicTacToe: phony || CMakeFiles/TicTacToe.dir
 
-build CMakeFiles/TicTacToev2.dir/src/main.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/main.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\main.cpp.obj.d
+build CMakeFiles/TicTacToe.dir/src/main.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/main.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
-  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src
 
-build CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/drawScreen.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\drawScreen.cpp.obj.d
+build CMakeFiles/TicTacToe.dir/src/lib/drawScreen.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/drawScreen.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\drawScreen.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
-  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src\lib
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
-build CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/winLogic.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\winLogic.cpp.obj.d
+build CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/winLogic.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\winLogic.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
-  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src\lib
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
-build CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/mapping.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\mapping.cpp.obj.d
+build CMakeFiles/TicTacToe.dir/src/lib/mapping.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/mapping.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\mapping.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
-  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src\lib
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
-build CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/touchLogic.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\touchLogic.cpp.obj.d
+build CMakeFiles/TicTacToe.dir/src/lib/touchLogic.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/touchLogic.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\touchLogic.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
-  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src\lib
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
-build CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj: CXX_COMPILER__TicTacToev2_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/dataInput.cpp || cmake_object_order_depends_target_TicTacToev2
-  DEP_FILE = CMakeFiles\TicTacToev2.dir\src\lib\dataInput.cpp.obj.d
+build CMakeFiles/TicTacToe.dir/src/lib/dataInput.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/dataInput.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\dataInput.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
-  OBJECT_FILE_DIR = CMakeFiles\TicTacToev2.dir\src\lib
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
+
+build CMakeFiles/TicTacToe.dir/src/lib/archive.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/archive.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\archive.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -ID:/Project/CSharp/TicTacToe/src
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
+
+build CMakeFiles/TicTacToe.dir/src/lib/loadGame.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/loadGame.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\loadGame.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -ID:/Project/CSharp/TicTacToe/src
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target TicTacToev2
+# Link build statements for EXECUTABLE target TicTacToe
 
 
 #############################################
-# Link the executable TicTacToev2.exe
+# Link the executable TicTacToe.exe
 
-build TicTacToev2.exe: CXX_EXECUTABLE_LINKER__TicTacToev2_Debug CMakeFiles/TicTacToev2.dir/src/main.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/drawScreen.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/winLogic.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/mapping.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/touchLogic.cpp.obj CMakeFiles/TicTacToev2.dir/src/lib/dataInput.cpp.obj
+build TicTacToe.exe: CXX_EXECUTABLE_LINKER__TicTacToe_Debug CMakeFiles/TicTacToe.dir/src/main.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/mapping.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/touchLogic.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/dataInput.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/archive.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/loadGame.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\TicTacToev2.dir
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = TicTacToev2.exe
-  TARGET_IMPLIB = libTicTacToev2.dll.a
-  TARGET_PDB = TicTacToev2.exe.dbg
+  TARGET_FILE = TicTacToe.exe
+  TARGET_IMPLIB = libTicTacToe.dll.a
+  TARGET_PDB = TicTacToe.exe.dbg
 
 
 #############################################
@@ -135,7 +149,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build TicTacToev2: phony TicTacToev2.exe
+build TicTacToe: phony TicTacToe.exe
 
 # =============================================================================
 # Folder targets.
@@ -145,7 +159,7 @@ build TicTacToev2: phony TicTacToev2.exe
 #############################################
 # Folder: D:/Project/CSharp/TicTacToe/cmake-build-debug
 
-build all: phony TicTacToev2.exe
+build all: phony TicTacToe.exe
 
 # =============================================================================
 # Built-in targets

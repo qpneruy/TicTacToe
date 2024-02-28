@@ -7,7 +7,7 @@
 #include <iostream>
 
 TableData tableData;
-char crossCheck(char intWin, char table[9][9], drawData drawData, char Player) {
+char crossCheck(int intWin, char table[9][9], drawData drawData, char Player) {
     int RcrossCount, LcrossCount;
     char n = drawData.intWin;
     for (int i = -n; i < n; i++) {
@@ -37,7 +37,38 @@ char crossCheck(char intWin, char table[9][9], drawData drawData, char Player) {
     }
     return -1;
 }
-char HorVerCheck(char intWin, char table[9][9], drawData drawData, char Player) {
+bool CheoPhaiCheck(int intWin, char table[9][9], drawData drawData, char Player) {
+    int l = 0, cnt = 0, tsCC, tsCR;
+    if (drawData.height >= drawData.width) {
+        tsCC = drawData.height;
+        tsCR = drawData.width;
+    } else if (drawData.width > drawData.height) {
+        tsCC = drawData.width;
+        tsCR = drawData.height;
+    }
+    for (int u = -tsCC; u <= tsCC; u++) {
+        l = 0;
+        for (int i = 0; i < tsCC + 1; i++) {
+            for (int j = 0; j < tsCR + 1; j++) {
+                int kq = i + 1;
+                if (i - kq + 1 == j) {
+                    l++;
+                    if (table[i + u][l - 1] == Player) {
+                        cnt++;
+                        if (cnt == intWin) {
+                            return true;
+                        }
+                    } else {
+                        cnt = 0;
+                    }
+                }
+
+            }
+        }
+    }
+    return false;
+}
+char HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player) {
     int HorCount, VerCount;
     for (int i = 0; i < drawData.height; i++) {
         HorCount = 0;
@@ -84,7 +115,8 @@ bool isWin(char table[9][9], drawData drData, char Player) {
         inBanCo(table, drData);
         return true;
     }
-//    char OresRL = crossCheck(drData.intWin, table, drData, Player);
+    if (CheoPhaiCheck(drData.intWin, table, drData, Player)) return true;
+
 //    if (OresRL != -1) {
 //        if (OresRL == 1) {
 //            for (int i = 1; i <= drData.intWin; i++) {
