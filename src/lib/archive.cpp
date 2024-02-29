@@ -4,13 +4,11 @@
 
 #include "include/archive.h"
 #include "include/drawScreen.h"
-#include "include/winLogic.h"
 #include <nlohmann/json.hpp>
 #include <fstream>
+#include <filesystem>
 
-using namespace std;
-
-void leaderboard::add_player(const std::string& Name, int score) {
+void leaderboard::add_player(const std::string &Name, int score) {
     bool found = false;
     if (!leaderboardData.empty()) {
         for (auto it = leaderboardData.begin(); it != leaderboardData.end(); ++it) {
@@ -33,9 +31,59 @@ void leaderboard::add_player(const std::string& Name, int score) {
     }
 }
 
+void init_file() {
+    std::ifstream file;
+    std::string path = std::filesystem::current_path().string();
+    file.open(path + "\\data.json");
+    if (file) return;
+    using json = nlohmann::json;
+    std::ofstream f(path + "\\data.json");
+    json ex2 = R"(
+  {
+    "board": {
+        "Oscore": 0,
+        "Xscore": 0,
+        "grid": [
+            [
+                "",
+                "",
+                ""
+            ],
+            [
+                "",
+                "",
+                ""
+            ],
+            [
+                "",
+                "",
+                ""
+            ]
+        ],
+        "intWin": 3,
+        "size": [
+            3,
+            3
+        ]
+    },
+    "leaderBoard": {
+        "O": [
+            "None"
+        ],
+        "X": [
+            "None"
+        ]
+    },
+    "setting": {
+        "music": true
+    }
+}
+)"_json;
+    f << ex2.dump(4);
+    f.close();
+}
 
-
-void save(const gameData& Data) {
+void save(const gameData &Data) {
     nlohmann::json data;
     for (int i = 0; i < Data.drData.height; ++i) {
         nlohmann::json row;
@@ -52,25 +100,26 @@ void save(const gameData& Data) {
     if (!Data.X_ld.leaderboardData.empty()) {
         for (const auto &Player: Data.X_ld.leaderboardData) {
             ++count;
-            data["leaderBoard"]["X"].push_back({{"top",    std::to_string(count)},
-                                                {"name", Player.first},
-                                                {"score",  Player.second}});
+            data["leaderBoard"]["X"].push_back({{"top",   std::to_string(count)},
+                                                {"name",  Player.first},
+                                                {"score", Player.second}});
             if (count + 1 == 11) break;
         }
-    } else {data["leaderBoard"]["X"].push_back("None");}
+    } else { data["leaderBoard"]["X"].push_back("None"); }
     count = 0;
     if (!Data.O_ld.leaderboardData.empty()) {
         for (const auto &Player: Data.O_ld.leaderboardData) {
             ++count;
 
-            data["leaderBoard"]["O"].push_back({{"top",    std::to_string(count)},
-                                                {"name", Player.first},
-                                                {"score",  Player.second}});
+            data["leaderBoard"]["O"].push_back({{"top",   std::to_string(count)},
+                                                {"name",  Player.first},
+                                                {"score", Player.second}});
             if (count + 1 == 11) break;
         }
-    } else {data["leaderBoard"]["O"].push_back("None");}
+    } else { data["leaderBoard"]["O"].push_back("None"); }
     data["setting"]["music"] = true;
-    std::ofstream file(R"(D:\Project\CSharp\TicTacToe\src\data.json)");
+    std::string path = std::filesystem::current_path().string();
+    std::ofstream file(path + R"(\data.json)");
     file << data.dump(4);
     file.close();
 }
@@ -79,25 +128,28 @@ void save(const gameData& Data) {
 gameData load() {
     gameData Data;
     nlohmann::json data;
-    std::ifstream file(R"(D:\Project\CSharp\TicTacToe\src\data.json)");
+    std::string path = std::filesystem::current_path().string();
+    std::ifstream file(path + R"(\data.json)");
     file >> data;
     file.close();
+    Data.drData.x = 40;
+    Data.drData.y = 11;
     Data.X.score = data["board"]["Xscore"];
     Data.O.score = data["board"]["Oscore"];
     Data.drData.height = data["board"]["size"][0];
     Data.drData.width = data["board"]["size"][1];
     Data.drData.intWin = data["board"]["intWin"];
-    for (int i = 0; i  < Data.drData.height; i++) {
-        for (int j = 0; j < Data.drData.width; j++){
+    for (int i = 0; i < Data.drData.height; i++) {
+        for (int j = 0; j < Data.drData.width; j++) {
             Data.table[i][j] = data["board"]["grid"][i][j];
         }
     }
     if (data["leaderBoard"]["O"][0] != "None") {
-        for (auto player : data["leaderBoard"]["O"])
-        Data.O_ld.add_player(player["name"], player["score"]);
+        for (auto player: data["leaderBoard"]["O"])
+            Data.O_ld.add_player(player["name"], player["score"]);
     }
     if (data["leaderBoard"]["X"][0] != "None") {
-        for (auto player : data["leaderBoard"]["X"])
+        for (auto player: data["leaderBoard"]["X"])
             Data.X_ld.add_player(player["name"], player["score"]);
     }
     Data.Music = data["setting"]["music"];

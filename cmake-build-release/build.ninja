@@ -51,56 +51,56 @@ build cmake_object_order_depends_target_TicTacToe: phony || CMakeFiles/TicTacToe
 
 build CMakeFiles/TicTacToe.dir/src/main.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/main.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\main.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src
 
 build CMakeFiles/TicTacToe.dir/src/lib/drawScreen.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/drawScreen.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\drawScreen.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 build CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/winLogic.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\winLogic.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 build CMakeFiles/TicTacToe.dir/src/lib/mapping.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/mapping.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\mapping.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 build CMakeFiles/TicTacToe.dir/src/lib/touchLogic.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/touchLogic.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\touchLogic.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 build CMakeFiles/TicTacToe.dir/src/lib/dataInput.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/dataInput.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\dataInput.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 build CMakeFiles/TicTacToe.dir/src/lib/archive.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/archive.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\archive.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
 
 build CMakeFiles/TicTacToe.dir/src/lib/loadGame.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Release D$:/Project/CSharp/TicTacToe/src/lib/loadGame.cpp || cmake_object_order_depends_target_TicTacToe
   DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\loadGame.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
   INCLUDES = -ID:/Project/CSharp/TicTacToe/src
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib

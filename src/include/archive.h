@@ -32,6 +32,6 @@ struct gameData {
 
 void save(const gameData& Data);
 gameData load();
-
+void init_file();
 
 #endif //TICTACTOEV2_ARCHIVE_H

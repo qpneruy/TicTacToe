@@ -3,11 +3,10 @@
 1701	1828	7284980505641216	TicTacToev2.exe	21072eaf812441c2
 17	2785	7307484916880137	CMakeFiles/TicTacToe.dir/src/dataInput.cpp.obj	80add8c6f548a44c
 4	1701	7284980504400770	CMakeFiles/TicTacToev2.dir/src/main.cpp.obj	f1592fdd0df88585
-23	731	7307484896330151	CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj	d41343d6ab0a2e1
+10	1079	7308136591826807	CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj	d41343d6ab0a2e1
 30	822	7307484897190162	CMakeFiles/TicTacToe.dir/src/lib/mapping.cpp.obj	f4d4ca0a36995e1c
 12	2747	7307484916460157	CMakeFiles/TicTacToe.dir/src/lib/touchLogic.cpp.obj	77832f22b6e17bfc
 7	2821	7307484917230149	CMakeFiles/TicTacToe.dir/src/main.cpp.obj	146a705be12a05c6
 0	2878	7307484917810152	CMakeFiles/TicTacToe.dir/src/lib/drawScreen.cpp.obj	6d1f36a34899fa9
 734	5524	7307484944140171	CMakeFiles/TicTacToe.dir/src/lib/archive.cpp.obj	e60569bcc689af3a
 5525	7235	7307484961322391	TicTacToe.exe	947d28903f60c2d7
-10	1079	7308136591826807	CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj	d41343d6ab0a2e1

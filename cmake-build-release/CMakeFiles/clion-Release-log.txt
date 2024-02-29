@@ -1,4 +1,4 @@
 D:\Sorftware\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=D:/Sorftware/CLion/bin/ninja/win/x64/ninja.exe -G Ninja -S D:\Project\CSharp\TicTacToe -B D:\Project\CSharp\TicTacToe\cmake-build-release
--- Configuring done (0.1s)
+-- Configuring done (0.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: D:/Project/CSharp/TicTacToe/cmake-build-release

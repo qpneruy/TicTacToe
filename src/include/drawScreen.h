@@ -34,7 +34,8 @@ void inKhung(int width, int height);
 
 void gotoXY(int x, int y);
 
-int menuHandle(drawData Data);
+
+int menuHandle(drawData Data, int selected);
 
 void inMenuChinh(drawData Data);
 
@@ -42,9 +43,8 @@ int getASCIINumber();
 
 void clearScreen();
 
-
 void inBackGround(drawData Data);
-
+void inManHinh(drawData drData);
 void inLogo();
-
+void esc();
 #endif //TICTACTOEV2_DRAWSCREEN_H

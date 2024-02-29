@@ -6,11 +6,11 @@
 #include <iomanip>
 #include <conio.h>
 #include "include/drawScreen.h"
-#include "include/archive.h"
 
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_ENTER 13
+#define KEY_ESC 27
 
 void gotoXY(int _x, int _y) {
     auto x = (short) _x;
@@ -209,17 +209,22 @@ void inMenuChinh(drawData Data) {
         std::cout << MainMenu[i];
     }
 }
-
+void inManHinh(drawData drData) {
+    inLogo();
+    inKhung(78, 34);
+}
 std::string MainMenuStr[] = {"Tiep Tuc", "Choi Moi", "Cai Dat", "Xep Hang", "Tac Gia", ""};
 
-int menuHandle(drawData Data) {
+int menuHandle(drawData Data, int selected) {
     int ch;
-    int index = 0;
-    int pointY = Data.y + 5;
+    bool endMenu;
+    int index = selected;
+    inManHinh(Data);
+    int pointY = Data.y + 5 + selected * 2;
     gotoXY(Data.x - 7, pointY);
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
                                       BACKGROUND_INTENSITY);
-    std::cout << " > " << MainMenuStr[0];
+    std::cout << " > " << MainMenuStr[selected];
     while (true) {
         if (kbhit()) {
             ch = getch();
@@ -245,33 +250,44 @@ int menuHandle(drawData Data) {
             if (ch == KEY_DOWN) {
                 pointY += 2;
                 ++index;
-                if (pointY >= Data.y + 15) {
+                if (index > 4) {
                     gotoXY(Data.x - 7, pointY - 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index - 1] << "  ";
                     index = 0;
                     pointY = Data.y + 5;
+                    endMenu = true;
+                } else endMenu = false;
+                    if (!endMenu) {
+                        gotoXY(Data.x - 7, pointY - 2);
+                        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                        std::cout << " " << MainMenuStr[index - 1] << "  ";
+                    }
+                    gotoXY(Data.x - 7, pointY);
+                    SetConsoleTextAttribute(hConsole,
+                                            FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                            BACKGROUND_INTENSITY);
+                    std::cout << " > " << MainMenuStr[index];
                 }
-                gotoXY(Data.x - 7, pointY - 2);
-                SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                std::cout << " " << MainMenuStr[index - 1] << "  ";
-                gotoXY(Data.x - 7, pointY);
-                SetConsoleTextAttribute(hConsole,
-                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
-                                        BACKGROUND_INTENSITY);
-                std::cout << " > " << MainMenuStr[index];
-            }
+
             if (ch == KEY_ENTER) {
                 gotoXY(Data.x - 7, Data.y + 5 + index * 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                std::cout << "                        ";
+                if (index != 4) std::cout << "                         ";
                 return index;
             }
         }
     }
 
 }
-
+void esc() {
+    while (true) {
+        if (kbhit()){
+            int ch = getch();
+            if (ch == KEY_ESC) return;
+        }
+    }
+}
 void clearScreen() {
     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD coord = {0, 0};
@@ -292,7 +308,6 @@ void SetWindowSize(SHORT width, SHORT height) {
 
     SetConsoleWindowInfo(hStdout, 1, &WindowSize);
 }
-
 void inKhung(int width, int height) {
     for (int i = 1; i <= width; i++) {
         gotoXY(i, 0);
@@ -382,4 +397,6 @@ void inBangXepHang(drawData drData) {
         gotoXY(drData.x + 16, yPos);
         yPos +=1;
     }
+    gotoXY(0, 0);
+    std::cout << "";
 }

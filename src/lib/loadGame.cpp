@@ -26,25 +26,25 @@ void LoadGame(gameData &gData) {
             std::cout << "                 ";
             gotoXY(7, 22);
             std::cout << "                 ";
-//            if (gData.drData.opr) {
+            if (gData.drData.opr) {
                 table[py][px] = 'O';
                 gotoXY(71, gData.drData.y + 10);
                 std::cout << 'X';
                 gData.drData.opr = false;
                 gData.drData.xpr = true;
-//            } else if (gData.drData.xpr) {
-//                table[py][px] = 'X';
-//                gotoXY(71, gData.drData.y + 10);
-//                std::cout << 'O';
-//                gData.drData.xpr = false;
-//                gData.drData.opr = true;
-//            }
-            char currentPlayer = gData.drData.xpr ? 'O' : 'X';
-            inBanCo(table, gData.drData);
-            if (isWin(table, gData.drData, 'O')) {
-                inBanCo(table, gData.drData);
-                break;
+            } else if (gData.drData.xpr) {
+                table[py][px] = 'X';
+                gotoXY(71, gData.drData.y + 10);
+                std::cout << 'O';
+                gData.drData.xpr = false;
+                gData.drData.opr = true;
             }
+//            char currentPlayer = gData.drData.xpr ? 'O' : 'X';
+//            inBanCo(table, gData.drData);
+//            if (isWin(table, gData.drData, 'O')) {
+//                inBanCo(table, gData.drData);
+//                break;
+//            }
 
         } else {
             ThongBao();
