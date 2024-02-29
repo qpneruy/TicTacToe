@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 
+
 struct drawData {
     int x{},
         y{},
@@ -26,7 +27,6 @@ void SetWindowSize(short width, short height);
 
 void inBangThoiGian(drawData drData, int XTime, int OTime);
 
-void inBangXepHang(drawData drData);
 
 void ThongBao();
 

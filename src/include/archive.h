@@ -26,7 +26,7 @@ struct gameData {
     drawData drData;
     Player X{}, O{};
     posData poData;
-    leaderboard X_ld, O_ld;
+    leaderboard player;
     bool Music = false;
 };
 

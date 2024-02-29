@@ -66,14 +66,9 @@ void init_file() {
             3
         ]
     },
-    "leaderBoard": {
-        "O": [
-            "None"
-        ],
-        "X": [
-            "None"
-        ]
-    },
+    "leaderBoard": [
+        "None"
+    ],
     "setting": {
         "music": true
     }
@@ -97,26 +92,15 @@ void save(const gameData &Data) {
     data["board"]["Oscore"] = Data.O.score;
     data["board"]["intWin"] = Data.drData.intWin;
     int count = 0;
-    if (!Data.X_ld.leaderboardData.empty()) {
-        for (const auto &Player: Data.X_ld.leaderboardData) {
+    if (!Data.player.leaderboardData.empty()) {
+        for (const auto &Player: Data.player.leaderboardData) {
             ++count;
-            data["leaderBoard"]["X"].push_back({{"top",   std::to_string(count)},
+            data["leaderBoard"].push_back({{"top",   std::to_string(count)},
                                                 {"name",  Player.first},
                                                 {"score", Player.second}});
             if (count + 1 == 11) break;
         }
-    } else { data["leaderBoard"]["X"].push_back("None"); }
-    count = 0;
-    if (!Data.O_ld.leaderboardData.empty()) {
-        for (const auto &Player: Data.O_ld.leaderboardData) {
-            ++count;
-
-            data["leaderBoard"]["O"].push_back({{"top",   std::to_string(count)},
-                                                {"name",  Player.first},
-                                                {"score", Player.second}});
-            if (count + 1 == 11) break;
-        }
-    } else { data["leaderBoard"]["O"].push_back("None"); }
+    } else { data["leaderBoard"].push_back("None"); }
     data["setting"]["music"] = true;
     std::string path = std::filesystem::current_path().string();
     std::ofstream file(path + R"(\data.json)");
@@ -144,13 +128,9 @@ gameData load() {
             Data.table[i][j] = data["board"]["grid"][i][j];
         }
     }
-    if (data["leaderBoard"]["O"][0] != "None") {
-        for (auto player: data["leaderBoard"]["O"])
-            Data.O_ld.add_player(player["name"], player["score"]);
-    }
-    if (data["leaderBoard"]["X"][0] != "None") {
-        for (auto player: data["leaderBoard"]["X"])
-            Data.X_ld.add_player(player["name"], player["score"]);
+    if (data["leaderBoard"][0] != "None") {
+        for (auto player: data["leaderBoard"])
+            Data.player.add_player(player["name"], player["score"]);
     }
     Data.Music = data["setting"]["music"];
     return Data;
