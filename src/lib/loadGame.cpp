@@ -15,7 +15,7 @@ void LoadGame(gameData &gData) {
     inBackGround(gData.drData);
     inKhung(78, 34);
     inBanCo(table, gData.drData);
-    inBangDiem(gData.drData, 0, 0);
+    inBangDiem(gData.drData, gData.O.score, gData.X.score);
     inBangThoiGian(gData.drData, 0, 0);
     while (true) {
         getPosMouse(gData.poData);

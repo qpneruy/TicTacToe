@@ -23,4 +23,7 @@ add_executable(TicTacToe
         src/include/loadGame.h
         src/lib/drawScreen/inBangXepHang.cpp
         src/include/drawScreen/inBangXepHang.h
+        src/lib/drawScreen/inCaiDat.cpp
+        src/include/drawScreen/inCaiDat.h
+        src/include/drawScreen/inCaiDat.h
 )

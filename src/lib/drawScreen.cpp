@@ -96,7 +96,7 @@ std::string BangDiemSt[] = {
         "════════════════╝"
 };
 
-void inBangDiem(drawData data, short Oscore, short Xscore) {
+void inBangDiem(drawData data, int Oscore, int Xscore) {
     for (int i = 0; i <= 13; i++) {
         gotoXY(data.x + 21, data.y + i - 1);
         std::cout << BangDiemSt[i];
@@ -194,7 +194,7 @@ void inBackGround(drawData Data) {
                  "       *             *                                        *            *    \n"
                  "       *        |   *                                          *           *    \n"
                  "  _  *          =   *                                          *         *     \n"
-                 " | |..         ===  *                                       ' ._____     *     \n"
+                 " | |..         ===  *       ▽/▲ Dieu Huong ⏎ Chon          ' ._____     *     \n"
                  " |    |         |    *                                        |.   |' .---\"|   \n"
                  " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
                  " |    |   .     |  .-'|                                |   |  |    ||      |   \n"
