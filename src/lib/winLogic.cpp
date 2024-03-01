@@ -14,13 +14,11 @@ TableData tableData;
 //        RcrossCount = 0;
 //        LcrossCount = 0;
 //        for (int j = 0; j < drawData.intWin; j++) {
-//            if (abs(n-j+i) <= drawData.intWin) {
-//                if (table[j][abs(n-j+i)] == Player) {
+//                if (table[j][abs(std::max(drawData.width, drawData.height)-j+i)] == Player) {
 //                    RcrossCount++;
 //                    tableData.tablePath_R[RcrossCount].first = j;
 //                    tableData.tablePath_R[RcrossCount].second = n - j + i;
 //                } else RcrossCount = 0;
-//            }
 //            if (table[j][i + j] == Player) {
 //                LcrossCount++;
 //                gotoXY(10, 10);
@@ -29,59 +27,62 @@ TableData tableData;
 //                tableData.tablePath_L[LcrossCount].second = i + j;
 //            } else LcrossCount = 0;
 //            if (RcrossCount >= intWin ) {
+//                std::cout << "dm1" << RcrossCount << " " << LcrossCount;
 //                return 1;
 //            } else if (LcrossCount >= intWin) {
+//                std::cout << "dm2";
 //                return 2;
 //            }
 //        }
 //    }
 //    return -1;
 //}
-bool crossCheck(int intWin, char table[9][9], drawData drawData, char Player) {
-    int l = 0, cnt = 0, tsCC, tsCR;
-    int LcrossCount = 0;
-    if (drawData.height >= drawData.width) {
-        tsCC = drawData.height;
-        tsCR = drawData.width;
-    } else if (drawData.width > drawData.height) {
-        tsCC = drawData.width;
-        tsCR = drawData.height;
-    }
-    for (int u = -tsCC; u <= tsCC; u++) {
-        l = 0;
-        for (int i = 0; i < tsCC + 1; i++) {
-            for (int j = 0; j < tsCR + 1; j++) {
-                int kq = i + 1;
-                if (i - kq + 1 == j) {
-                    l++;
-                    if (table[i + u][l - 1] == Player) {
-                        ++LcrossCount;
-                        tableData.tablePath_L[LcrossCount].first = i + u;
-                        tableData.tablePath_L[LcrossCount].second = l - 1;
-                        if (cnt == intWin) {
-                            return true;
-                        }
-                    } else {
-                        cnt = 0;
-                    }
-                }
-
-            }
-        }
-    }
-    return false;
-}
-char crossProcess(int intWin, char table[9][9], drawData drawData, char Player) {
-    char R_table[9][9] = {};
-    for (int i = 0; i < drawData.height; i++) {
-        for (int j = drawData.width - 1; j >= 0; j--) {
-            R_table[i][drawData.width - j - 1] = table[i][j];
-        }
-    }
-    crossCheck(intWin, table, drawData, Player);
-    crossCheck(intWin, R_table, drawData, Player);
-}
-char HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player) {
+//bool crossCheck(int intWin, char table[9][9], drawData drawData, char Player) {
+//    int l = 0, cnt = 0, tsCC, tsCR;
+//    int LcrossCount = 0;
+//    if (drawData.height >= drawData.width) {
+//        tsCC = drawData.height;
+//        tsCR = drawData.width;
+//    } else if (drawData.width > drawData.height) {
+//        tsCC = drawData.width;
+//        tsCR = drawData.height;
+//    }
+//    for (int u = -tsCC; u <= tsCC; u++) {
+//        l = 0;
+//        for (int i = 0; i < tsCC + 1; i++) {
+//            for (int j = 0; j < tsCR + 1; j++) {
+//                int kq = i + 1;
+//                if (i - kq + 1 == j) {
+//                    l++;
+//                    if (table[i + u][l - 1] == Player) {
+//                        ++LcrossCount;
+//                        tableData.tablePath_L[LcrossCount].first = i + u;
+//                        tableData.tablePath_L[LcrossCount].second = l - 1;
+//                        if (cnt == intWin) {
+//                            return true;
+//                        }
+//                    } else {
+//                        cnt = 0;
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+//    return false;
+//}
+//char crossProcess(int intWin, char table[9][9], drawData drawData, char Player) {
+//    char R_table[9][9] = {};
+//    for (int i = 0; i < drawData.height; i++) {
+//        for (int j = drawData.width - 1; j >= 0; j--) {
+//            R_table[i][drawData.width - j - 1] = table[i][j];
+//        }
+//    }
+//    if (crossCheck(intWin, table, drawData, Player)) return 1;
+//    if (crossCheck(intWin, R_table, drawData, Player)) return 2;
+//    return -1;
+//}
+char HorVerCheck(int intWin, std::string table[9][9], drawData drawData, std::string Player) {
     int HorCount, VerCount;
     for (int i = 0; i < drawData.height; i++) {
         HorCount = 0;
@@ -103,7 +104,7 @@ char HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player) {
                  ++VerCount;
                  tableData.tablePath_L[VerCount].first = i;
                  tableData.tablePath_L[VerCount].second = j;
-             }
+             } else VerCount = 0;
         }
         if (VerCount >= intWin) {
             return 2;
@@ -112,7 +113,7 @@ char HorVerCheck(int intWin, char table[9][9], drawData drawData, char Player) {
     return -1;
 }
 
-bool isWin(char table[9][9], drawData drData, char Player) {
+bool isWin(std::string table[9][9], drawData drData, std::string Player) {
     char OresHV = HorVerCheck(drData.intWin, table, drData, Player);;
     if (OresHV != -1) {
     if (OresHV == 1) {
@@ -128,7 +129,9 @@ bool isWin(char table[9][9], drawData drData, char Player) {
         inBanCo(table, drData);
         return true;
     }
-
+//    char OresRL = crossProcess(drData.intWin, table, drData, Player);
+////    std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" << OresRL;
+//char OresRL = crossCheck(drData.intWin, table, drData, Player);
 //    if (OresRL != -1) {
 //        if (OresRL == 1) {
 //            for (int i = 1; i <= drData.intWin; i++) {
@@ -140,6 +143,7 @@ bool isWin(char table[9][9], drawData drData, char Player) {
 //                table[tableData.tablePath_L[i].first][tableData.tablePath_L[i].second] = '\\';
 //            }
 //        }
+////        std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" << OresRL;
 //        inBanCo(table, drData);
 //        return true;
 //    }

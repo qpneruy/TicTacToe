@@ -39,6 +39,7 @@ int main() {
         gData.drData.height = 9;
         gData.drData.intWin = 9;
         gData.drData.xpr = true;
+        bool SettingSate[2] = {false, false};
         switch (menuHandle(gData.drData, selected)) {
             case 0:
                 gData = load();
@@ -48,14 +49,13 @@ int main() {
                 break;
             case 1:
                 UserInput(gData.drData);
-                LoadGame(gData);
-                esc();
+                LoadGame(gData); // co san esc
+//                esc();
                 selected = 1;
                 break;
             case 2:
-
-                inCaiDat(gData.drData);
-                esc();
+                //chua xong
+//                inCaiDat(gData.drData, SettingSate); // co san esc
                 selected = 2;
                 break;
             case 3:

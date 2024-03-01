@@ -8,7 +8,7 @@
 
 #include "include/drawScreen.h"
 
-void inCaiDat(drawData drData);
+//void inCaiDat(drawData drData, bool &settingSate[2]);
 
 
 #endif //TICTACTOE_INCAIDAT_H

@@ -4,13 +4,13 @@
 // Created by huuti on 003, 03/02/2024.
 //
 #include "include/touchLogic.h"
-
+#include <conio.h>
 #include <Windows.h>
 
 int x_, y_;
 bool Pressed = false;
 
-void getPosMouse(posData &data) {
+void getEvent(posData &data) {
     Pressed = false;
     HANDLE hStdin;
     DWORD fdwMode, eventRead;
@@ -20,7 +20,7 @@ void getPosMouse(posData &data) {
     SetConsoleMode(hStdin, fdwMode);
     fdwMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT;
     SetConsoleMode(hStdin, fdwMode);
-    while (!Pressed) {
+//    while (!Pressed) {
         PeekConsoleInput(hStdin, &Inrec, 1, &eventRead);
         ReadConsoleInput(hStdin, &Inrec, 1, &eventRead);
         x_ = Inrec.Event.MouseEvent.dwMousePosition.X;
@@ -35,7 +35,8 @@ void getPosMouse(posData &data) {
                 }
                 break;
             }
-        }
+//        }
+//        return;
     }
 }
 
@@ -84,8 +85,8 @@ void dacPos(const gameData& gdata, int &o_x, int &o_y) {
     o_y = -1;
 
 }
-bool SyntaxCheck(char table[9][9], int y, int x) {
-    if (table[y][x] != 'X' && table[y][x] != 'O'){
+bool SyntaxCheck(std::string table[9][9], int y, int x) {
+    if (table[y][x] != "X" && table[y][x] != "O"){
         return true;
     }
     return false;

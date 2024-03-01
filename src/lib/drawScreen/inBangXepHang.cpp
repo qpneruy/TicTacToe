@@ -22,7 +22,8 @@ std::string BangXepHang[15] {
         "  7.  ____        _",
         "  8.  ____        _",
         "  9.  ____        _",
-        "  10. ____        _"};
+        "  10. ____        _  ",
+        "                   "};
 std::string leaderboardSign[15] {
         "",
         "╿               ╿",

@@ -19,7 +19,7 @@ struct drawData {
          xpr = false;
 };
 
-void inBanCo(char tableData[9][9], drawData data);
+void inBanCo(std::string tableData[9][9], drawData data);
 
 void inBangDiem(drawData data, int Oscore, int Xscore);
 

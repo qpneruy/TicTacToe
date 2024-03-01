@@ -22,7 +22,7 @@ void gotoXY(int _x, int _y) {
     SetConsoleCursorPosition(hConsole, CursorPosition);
 }
 
-void inBanCo(char tableData[9][9], drawData data) {
+void inBanCo(std::string tableData[9][9], drawData data) {
 
     gotoXY(data.x - (data.width * 4 / 2), data.y - 1);
     std::cout << "╿\n";
@@ -69,7 +69,7 @@ void inBanCo(char tableData[9][9], drawData data) {
         if (i != data.height) {
             std::cout << "  ";
             for (int j = 0; j < data.width; j++) {
-                if (tableData[i][j] != ' ') { std::cout << "| " << tableData[i][j] << " "; }
+                if (tableData[i][j] != "") { std::cout << "| " << tableData[i][j] << " "; }
                 else {
                     std::cout << "|   ";
                 } // (1): | .. | .. | .. | ...
@@ -160,7 +160,7 @@ void inLogo() {
 }
 
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-std::string MainMenu[] = {"╿           ╿\n",
+std::string MainMenu[] = {"╿           ╿   \n",
                           "┋           ┋\n",
                           "┋           ┋\n",
                           "┋           ┋\n",
@@ -195,7 +195,7 @@ void inBackGround(drawData Data) {
                  "       *        |   *                                          *           *    \n"
                  "  _  *          =   *                                          *         *     \n"
                  " | |..         ===  *       ▽/▲ Dieu Huong ⏎ Chon          ' ._____     *     \n"
-                 " |    |         |    *                                        |.   |' .---\"|   \n"
+                 " |    |         |    *         ESC - Quay Lai                 |.   |' .---\"|   \n"
                  " |    | .       | .  * _                               .--'| '||   | _|    |   \n"
                  " |    |   .     |  .-'|                                |   |  |    ||      |   \n"
                  " |    .-----. . |  |' |  ||                      ' |   |   |  |    ||      |    \n"
@@ -231,7 +231,7 @@ int menuHandle(drawData Data, int selected) {
             if (ch == KEY_UP) {
                 pointY -= 2;
                 --index;
-                if (pointY <= Data.y + 3) {
+                if (index < 0) {
                     gotoXY(Data.x - 7, pointY + 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index + 1] << "  ";
