@@ -1,5 +1,5 @@
 void init_(drawData drData, posData &poData){
-    char table[9][9] = {};
+    char table[100][100] = {};
     SetWindowSize(80, 35);
     inLogo();
     inBangDiem(0, 0);

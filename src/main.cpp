@@ -16,7 +16,7 @@
 #include "include/dataInput.h"
 #include "include/loadGame.h"
 #include "include/drawScreen/inBangXepHang.h"
-#include "include/drawScreen/inCaiDat.h"
+
 using namespace std;
 void init_(gameData& gData) {
     init_file();
@@ -27,27 +27,24 @@ void init_(gameData& gData) {
 int main() {
     gameData gData;
     init_(gData);
-    inManHinh(gData.drData);
     gotoXY(40, 11);
-    gData.drData.width = 9;
-    gData.drData.height = 9;
-    gData.drData.intWin = 9;
+    inManHinh(gData.drData);
     int selected = 0;
+    inBangThoiGian(gData.drData, 0, 0);
     while (true) {
         gotoXY(0, 0);
         inBackGround(gData.drData);
         inMenuChinh(gData.drData);
         switch (menuHandle(gData.drData, selected)) {
             case 0:
-                gData = load();
-                LoadGame(gData, false);
+//                gData = load();
+//                LoadGame(gData, false);
                 selected = 0;
-                esc();
+//                esc();
                 break;
             case 1:
                 UserInput(gData.drData);
                 LoadGame(gData, true);
-                esc();
                 selected = 1;
                 break;
             case 2:
@@ -71,7 +68,5 @@ int main() {
                 selected = 4;
                 break;
         }
-    }
-    while (true) {
     }
 }

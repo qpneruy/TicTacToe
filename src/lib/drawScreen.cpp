@@ -22,7 +22,7 @@ void gotoXY(int _x, int _y) {
     SetConsoleCursorPosition(hConsole, CursorPosition);
 }
 
-void inBanCo(std::string tableData[9][9], drawData data) {
+void inBanCo(std::string tableData[100][100], drawData data) {
 
     gotoXY(data.x - (data.width * 4 / 2), data.y - 1);
     std::cout << "╿\n";
@@ -116,22 +116,22 @@ std::string ThoiGianSt[] = {
         "  ╿              ╿ ",
         "  ┋              ┋ ",
         "  ┋              ┋ ",
-        "  ╽_┌THOI GIAN┐__╽ ",
+        "  ╽_┌Thong Bao┐__╽ ",
         " ║├-────────────-┤║ ",
-        " ║| O:           |║ ",
-        " ║├-────────────-┤║",
-        " ║| X:           |║ ",
+        " ║|              |║ ",
+        " ║├              ┤║",
+        " ║|              |║ ",
         " ║└──────────────┘║ ",
         " ╚════════════════╝"
 };
 
-std::string formatTime(int seconds) {
-    int minutes = seconds / 60;
-    seconds %= 60;
-    std::stringstream ss;
-    ss << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2) << std::setfill('0') << seconds;
-    return ss.str();
-}
+//std::string formatTime(int seconds) {
+//    int minutes = seconds / 60;
+//    seconds %= 60;
+//    std::stringstream ss;
+//    ss << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2) << std::setfill('0') << seconds;
+//    return ss.str();
+//}
 
 void inBangThoiGian(drawData drData, int XTime, int OTime) {
 
@@ -139,10 +139,10 @@ void inBangThoiGian(drawData drData, int XTime, int OTime) {
         gotoXY(1, drData.y + i - 1);
         std::cout << ThoiGianSt[i];
     }
-    gotoXY(8, drData.y + 4);
-    std::cout << formatTime(XTime);
-    gotoXY(8, drData.y + 6);
-    std::cout << formatTime(OTime);
+//    gotoXY(8, drData.y + 4);
+//    std::cout << formatTime(XTime);
+//    gotoXY(8, drData.y + 6);
+//    std::cout << formatTime(OTime);
 }
 
 void inLogo() {
@@ -338,10 +338,75 @@ int getASCIINumber() {
     }
 }
 
-void ThongBao() {
-    gotoXY(5, 21);
+void inThongBao() {
+    gotoXY(5, 15);
     std::cout << "Vi Tri Khong";
-    gotoXY(7, 22);
+    gotoXY(7, 17);
     std::cout << "Hop Le!";
 }
+void inNguoiThang(std::string player) {
+    gotoXY(5, 21);
+    std::cout << player << " Thang!";
+}
+std::string MenuKetThuc[3] = {"Choi Van Moi", "Choi Tiep",  "Thoat"};
+int inMenuKetThuc() {
+    int ch = 0, index = 0, yPos = 22;
+    gotoXY(2, 22);
+    for (const auto &i : MenuKetThuc) {
+        gotoXY(2,  yPos);
+        std::cout << "| "<< i;
+        yPos += 1;
+    }
+    yPos = 22;
+    gotoXY(2, yPos);
+    SetConsoleTextAttribute(hConsole,
+                            FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                            BACKGROUND_INTENSITY);
+    std::cout << "| > " << MenuKetThuc[0];
 
+    while(true) {
+        if (kbhit()){
+            ch = getch();
+            if (ch == 72) {
+                --index;
+                --yPos;
+                if (index < 0) {
+                    index++;
+                    yPos++;
+                }
+                SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                gotoXY(2, yPos+1);
+                std::cout << "| " << MenuKetThuc[index+1] << "  ";
+                gotoXY(2, yPos);
+                SetConsoleTextAttribute(hConsole,
+                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                        BACKGROUND_INTENSITY);
+                std::cout << "| > " << MenuKetThuc[index];
+            }
+            if (ch == 80) {
+                ++index;
+                ++yPos;
+                if (index > 2) {
+                    index--;
+                    yPos--;
+                }
+                gotoXY(2, yPos-1);
+                SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                std::cout << "| " << MenuKetThuc[index-1] << "  ";
+                gotoXY(2, yPos);
+                SetConsoleTextAttribute(hConsole,
+                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
+                                        BACKGROUND_INTENSITY);
+                std::cout << "| > " << MenuKetThuc[index];
+            }
+            if (ch == 13) {
+                SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                for (int i = 0; i < 3; i ++ ){
+                    gotoXY(2, 22+i);
+                    std::cout << "                ";
+                }
+                return index;
+            }
+        }
+    }
+}

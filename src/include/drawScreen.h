@@ -18,8 +18,8 @@ struct drawData {
     bool opr = false,
          xpr = false;
 };
-
-void inBanCo(std::string tableData[9][9], drawData data);
+int inMenuKetThuc();
+void inBanCo(std::string tableData[100][100], drawData data);
 
 void inBangDiem(drawData data, int Oscore, int Xscore);
 
@@ -28,7 +28,7 @@ void SetWindowSize(short width, short height);
 void inBangThoiGian(drawData drData, int XTime, int OTime);
 
 
-void ThongBao();
+void inThongBao();
 
 void inKhung(int width, int height);
 

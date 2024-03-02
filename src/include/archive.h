@@ -22,7 +22,7 @@ public:
     void add_player(const std::string& Name, int score);
 };
 struct gameData {
-    std::string table[9][9] = {};
+    std::string table[100][100] = {};
     drawData drData;
     Player X{}, O{};
     posData poData;

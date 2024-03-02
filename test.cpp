@@ -1,7 +1,7 @@
 #include<iostream>
 #include<windows.h>
 using namespace std;
-void kt(int table[9][9]) {
+void kt(int table[100][100]) {
 //	for (int i = -9; i<= 9; i++) {
 //	cout << "\n";
 		for (int j = 0 ; j < 9; j ++){
@@ -13,7 +13,7 @@ void kt(int table[9][9]) {
 
 int main() {
 	int ch = 0;
-    int table[9][9] = {};
+    int table[100][100] = {};
     for (int j = 0; j < 9; j++) {
     for (int i = 0; i < 9; i++) {
     	++ch;

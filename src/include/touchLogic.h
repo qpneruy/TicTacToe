@@ -12,6 +12,6 @@ void getEvent(posData &data);
 
 void dacPos(const gameData& gdata, int &o_x, int &o_y);
 
-bool SyntaxCheck(std::string table[9][9], int y, int x);
+bool SyntaxCheck(std::string table[100][100], int y, int x);
 
 #endif //TICTACTOEV2_TOUCHLOGIC_H

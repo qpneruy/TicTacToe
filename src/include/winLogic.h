@@ -15,6 +15,6 @@ struct TableData {
     std::pair<int, int> tablePath_R[10] = {};
     std::pair<int, int> tablePath_L[10] = {}; // ??????
 };
-bool isWin(std::string table[9][9], drawData drData, std::string Player);
-
+bool isWin(std::string table[100][100], drawData drData, std::string Player);
+bool drawC(std::string table[100][100], drawData drData);
 #endif //TICTACTOEV2_WINLOGIC_H
