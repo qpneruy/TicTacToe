@@ -104,14 +104,5 @@ bool isWin(std::string table[100][100], drawData drData, std::string Player) {
         return true;
     }
     if (crossCheck(drData.intWin, table, drData, Player)) return true;
-
-    if (drawCheck(table, drData)) {
-        for (int i = 0; i < drData.height; i++) {
-            for (int j = 0; j < drData.width; j++) {
-                table[i][j] = "*";
-            }
-        }
-        return true;
-    }
     return false;
 }

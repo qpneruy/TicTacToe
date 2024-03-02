@@ -15,7 +15,7 @@ void LoadGame(gameData &gData, bool isNewGame) {
             }
         }
     }
-    bool playerWin = false;
+    bool playerWin = false, draw = false;
     startMap(gData.drData, gData.poData);
     int px, py;
     gotoXY(0, 0);
@@ -43,31 +43,41 @@ void LoadGame(gameData &gData, bool isNewGame) {
             std::cout << "             ";
             gotoXY(7, 17);
             std::cout << "           ";
-//            if (gData.drData.opr) {
+            if (gData.drData.opr) {
                 gData.table[py][px] = 'O';
                 gotoXY(71, gData.drData.y + 10);
                 std::cout << 'X';
                 gData.drData.opr = false;
                 gData.drData.xpr = true;
-//            } else if (gData.drData.xpr) {
-//                gData.table[py][px] = 'X';
-//                gotoXY(71, gData.drData.y + 10);
-//                std::cout << 'O';
-//                gData.drData.xpr = false;
-//                gData.drData.opr = true;
-//            }
+            } else if (gData.drData.xpr) {
+                gData.table[py][px] = 'X';
+                gotoXY(71, gData.drData.y + 10);
+                std::cout << 'O';
+                gData.drData.xpr = false;
+                gData.drData.opr = true;
+            }
             currentPlayer = gData.drData.xpr ? "O" : "X";
             inBanCo(gData.table, gData.drData);
             if (isWin(gData.table, gData.drData, currentPlayer)) {
                 inBanCo(gData.table, gData.drData);
                 playerWin = true;
             }
+            if (drawC(gData.table, gData.drData)) {
+                for (int i = 0; i < gData.drData.height; i++) {
+                    for (int j = 0; j < gData.drData.width; j++) {
+                        gData.table[i][j] = "*";
+                    }
+                    playerWin = true;
+                }
+                draw = true;
+            } else draw = false;
         } else if (px == -1 && py == -1){
             if (cnt == 0) inThongBao();
             ++cnt;
         }
         if (playerWin) {
-            if (currentPlayer == "X") gData.X.score++; else gData.O.score++;
+            if (!draw) {
+            if (currentPlayer == "X") gData.X.score++; else gData.O.score++; }
             switch (inMenuKetThuc()) {
                 case 0:
                     for (int i = 0; i < gData.drData.height; ++i) {
@@ -75,6 +85,8 @@ void LoadGame(gameData &gData, bool isNewGame) {
                             gData.table[i][j] = "";
                         }
                     }
+                    gData.O.score = 0;
+                    gData.X.score = 0;
                     return;
                 case 1:
                     for (int i = 0; i < gData.drData.height; ++i) {
@@ -107,7 +119,7 @@ void LoadGame(gameData &gData, bool isNewGame) {
                     std::cout << st;
                     gotoXY(26, 18);
                     std::cout << "Da Cap Nhat Bang Xep Hang!";
-                    if (currentPlayer == "X") {
+                    if (gData.X.score > gData.O.score) {
                         gData.player.add_player(st, gData.X.score);
                     } else {
                         gData.player.add_player(st, gData.O.score);
