@@ -37,6 +37,17 @@ TableData tableData;
 //    }
 //    return -1;
 //}
+bool drawCheck(std::string table[9][9], drawData drData) {
+    int intDraw = drData.width * drData.height, count = 0;
+    for (int i = 0; i < drData.height; i++) {
+        for (int j = 0; j < drData.width; j++) {
+            if (table[i][j] == "X" || table[i][j] == "O") {
+                ++count;
+            }
+        }
+    }
+    return count == intDraw;
+}
 //bool crossCheck(int intWin, char table[9][9], drawData drawData, char Player) {
 //    int l = 0, cnt = 0, tsCC, tsCR;
 //    int LcrossCount = 0;
@@ -147,5 +158,13 @@ bool isWin(std::string table[9][9], drawData drData, std::string Player) {
 //        inBanCo(table, drData);
 //        return true;
 //    }
+if (drawCheck(table, drData)) {
+    for (int i = 0; i < drData.height; i++) {
+        for (int j = 0; j < drData.width; j++) {
+        table[i][j] = "*";
+        }
+    }
+    return true;
+}
     return false;
 }

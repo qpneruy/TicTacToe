@@ -177,8 +177,9 @@ std::string MainMenu[] = {"╿           ╿   \n",
                           "║ Tac Gia   ║\n",
                           "╚═══════════╝\n"};
 void inBackGround(drawData Data) {
-    gotoXY(0, Data.y);
+    gotoXY(0, Data.y-1);
     std::cout << "                                                                                \n"
+                 "                                                                                \n"
                  "                                                                                \n"
                  "                                                                                \n"
                  "                                                                                \n"

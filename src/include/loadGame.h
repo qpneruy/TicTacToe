@@ -9,7 +9,7 @@
 #include "include/mapping.h"
 #include "archive.h"
 
-void LoadGame(gameData &gdata);
+void LoadGame(gameData &gdata, bool isNewGame);
 
 
 #endif //TICTACTOE_LOADGAME_H

@@ -8,10 +8,9 @@
 #include <Windows.h>
 
 int x_, y_;
-bool Pressed = false;
 
 void getEvent(posData &data) {
-    Pressed = false;
+//    Pressed = false;
     HANDLE hStdin;
     DWORD fdwMode, eventRead;
     INPUT_RECORD Inrec;
@@ -31,7 +30,7 @@ void getEvent(posData &data) {
                     data.playerPosX = x_;
                     data.playerPosY = y_;
 //                    std::cout << " " << x_ << "  " << y_;
-                    Pressed = true;
+//                    Pressed = true;
                 }
                 break;
             }
@@ -53,7 +52,6 @@ int searchNearestPos(const int mapTable[9], int x, int n) {
 
 void dacPos(const gameData& gdata, int &o_x, int &o_y) {
     bool found_1 = false, found_2 = false;
-    std::cout << gdata.poData.playerPosX;
     if (gdata.drData.x + (gdata.drData.width * 4 / 2)+1 == gdata.poData.playerPosX || gdata.drData.x + (gdata.drData.width * 4 / 2)+2 == gdata.poData.playerPosX  ) {
         o_x = -1;
         o_y = -1;

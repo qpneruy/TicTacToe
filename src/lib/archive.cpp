@@ -41,7 +41,9 @@ void init_file() {
     json ex2 = R"(
   {
     "board": {
+        "OTurn": false,
         "Oscore": 0,
+        "XTurn": false,
         "Xscore": 0,
         "grid": [
             [
@@ -91,6 +93,8 @@ void save(const gameData &Data) {
     data["board"]["Xscore"] = Data.X.score;
     data["board"]["Oscore"] = Data.O.score;
     data["board"]["intWin"] = Data.drData.intWin;
+    data["board"]["XTurn"] = Data.drData.xpr;
+    data["board"]["OTurn"] = Data.drData.opr;
     int count = 0;
     if (!Data.player.leaderboardData.empty()) {
         for (const auto &Player: Data.player.leaderboardData) {
@@ -123,6 +127,8 @@ gameData load() {
     Data.drData.height = data["board"]["size"][0];
     Data.drData.width = data["board"]["size"][1];
     Data.drData.intWin = data["board"]["intWin"];
+    Data.drData.opr = data["board"]["OTurn"];
+    Data.drData.xpr = data["board"]["XTurn"];
     for (int i = 0; i < Data.drData.height; i++) {
         for (int j = 0; j < Data.drData.width; j++) {
             Data.table[i][j] = data["board"]["grid"][i][j];

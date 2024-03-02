@@ -29,28 +29,25 @@ int main() {
     init_(gData);
     inManHinh(gData.drData);
     gotoXY(40, 11);
-
+    gData.drData.width = 9;
+    gData.drData.height = 9;
+    gData.drData.intWin = 9;
     int selected = 0;
     while (true) {
         gotoXY(0, 0);
         inBackGround(gData.drData);
         inMenuChinh(gData.drData);
-        gData.drData.width = 9;
-        gData.drData.height = 9;
-        gData.drData.intWin = 9;
-        gData.drData.xpr = true;
-        bool SettingSate[2] = {false, false};
         switch (menuHandle(gData.drData, selected)) {
             case 0:
                 gData = load();
-                LoadGame(gData);
+                LoadGame(gData, false);
                 selected = 0;
                 esc();
                 break;
             case 1:
                 UserInput(gData.drData);
-                LoadGame(gData); // co san esc
-//                esc();
+                LoadGame(gData, true);
+                esc();
                 selected = 1;
                 break;
             case 2:

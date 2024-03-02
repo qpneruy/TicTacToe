@@ -54,8 +54,8 @@ void UserInput(drawData &drData) {
                     break;
                 }
                 if (ch == 13) {
-                    drData.height = static_cast<char>(height);
-                    drData.width = static_cast<char>(width);
+                    drData.width = static_cast<char>(height);
+                    drData.height = static_cast<char>(width);
                     End = true;
                     break;
                 }

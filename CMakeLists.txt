@@ -4,7 +4,7 @@ project(TicTacToe)
 set(CMAKE_CXX_STANDARD 17)
 
 include_directories(src)
-
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 add_executable(TicTacToe
         src/main.cpp
         src/lib/drawScreen.cpp
