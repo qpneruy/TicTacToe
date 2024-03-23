@@ -87,7 +87,7 @@ char HorVerCheck(int intWin, std::string table[100][100], drawData drawData, std
     return -1;
 }
 
-bool isWin(std::string table[100][100], drawData drData, std::string Player) {
+bool isWin(std::string table[100][100], drawData drData, const std::string& Player) {
     char OresHV = HorVerCheck(drData.intWin, table, drData, Player);;
     if (OresHV != -1) {
         if (OresHV == 1) {

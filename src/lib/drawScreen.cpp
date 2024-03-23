@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <windows.h>
-#include <iomanip>
 #include <conio.h>
 #include "include/drawScreen.h"
 
@@ -69,7 +68,7 @@ void inBanCo(std::string tableData[100][100], drawData data) {
         if (i != data.height) {
             std::cout << "  ";
             for (int j = 0; j < data.width; j++) {
-                if (tableData[i][j] != "") { std::cout << "| " << tableData[i][j] << " "; }
+                if (!tableData[i][j].empty()) { std::cout << "| " << tableData[i][j] << " "; }
                 else {
                     std::cout << "|   ";
                 } // (1): | .. | .. | .. | ...
@@ -112,7 +111,7 @@ void inBangDiem(drawData data, int Oscore, int Xscore) {
 
 }
 
-std::string ThoiGianSt[] = {
+std::string ThongBaoSt[] = {
         "  ╿              ╿ ",
         "  ┋              ┋ ",
         "  ┋              ┋ ",
@@ -125,24 +124,11 @@ std::string ThoiGianSt[] = {
         " ╚════════════════╝"
 };
 
-//std::string formatTime(int seconds) {
-//    int minutes = seconds / 60;
-//    seconds %= 60;
-//    std::stringstream ss;
-//    ss << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2) << std::setfill('0') << seconds;
-//    return ss.str();
-//}
-
-void inBangThoiGian(drawData drData, int XTime, int OTime) {
-
+void inBangThongBao(drawData drData) {
     for (int i = 0; i <= 9; i++) {
         gotoXY(1, drData.y + i - 1);
-        std::cout << ThoiGianSt[i];
+        std::cout << ThongBaoSt[i];
     }
-//    gotoXY(8, drData.y + 4);
-//    std::cout << formatTime(XTime);
-//    gotoXY(8, drData.y + 6);
-//    std::cout << formatTime(OTime);
 }
 
 void inLogo() {
@@ -210,7 +196,7 @@ void inMenuChinh(drawData Data) {
         std::cout << MainMenu[i];
     }
 }
-void inManHinh(drawData drData) {
+void inManHinh() {
     inLogo();
     inKhung(78, 34);
 }
@@ -220,7 +206,7 @@ int menuHandle(drawData Data, int selected) {
     int ch;
     bool endMenu;
     int index = selected;
-    inManHinh(Data);
+    inManHinh();
     int pointY = Data.y + 5 + selected * 2;
     gotoXY(Data.x - 7, pointY);
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY |
@@ -344,13 +330,9 @@ void inThongBao() {
     gotoXY(7, 17);
     std::cout << "Hop Le!";
 }
-void inNguoiThang(std::string player) {
-    gotoXY(5, 21);
-    std::cout << player << " Thang!";
-}
 std::string MenuKetThuc[3] = {"Choi Van Moi", "Choi Tiep",  "Thoat"};
 int inMenuKetThuc() {
-    int ch = 0, index = 0, yPos = 22;
+    int ch, index = 0, yPos = 22;
     gotoXY(2, 22);
     for (const auto &i : MenuKetThuc) {
         gotoXY(2,  yPos);

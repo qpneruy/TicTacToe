@@ -119,6 +119,13 @@ build CMakeFiles/TicTacToe.dir/src/lib/drawScreen/inCaiDat.cpp.obj: CXX_COMPILER
   OBJECT_DIR = CMakeFiles\TicTacToe.dir
   OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib\drawScreen
 
+build CMakeFiles/TicTacToe.dir/src/lib/MiniMax.cpp.obj: CXX_COMPILER__TicTacToe_unscanned_Debug D$:/Project/CSharp/TicTacToe/src/lib/MiniMax.cpp || cmake_object_order_depends_target_TicTacToe
+  DEP_FILE = CMakeFiles\TicTacToe.dir\src\lib\MiniMax.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -ID:/Project/CSharp/TicTacToe/src
+  OBJECT_DIR = CMakeFiles\TicTacToe.dir
+  OBJECT_FILE_DIR = CMakeFiles\TicTacToe.dir\src\lib
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TicTacToe
@@ -127,7 +134,7 @@ build CMakeFiles/TicTacToe.dir/src/lib/drawScreen/inCaiDat.cpp.obj: CXX_COMPILER
 #############################################
 # Link the executable TicTacToe.exe
 
-build TicTacToe.exe: CXX_EXECUTABLE_LINKER__TicTacToe_Debug CMakeFiles/TicTacToe.dir/src/main.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/mapping.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/touchLogic.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/dataInput.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/archive.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/loadGame.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen/inBangXepHang.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen/inCaiDat.cpp.obj
+build TicTacToe.exe: CXX_EXECUTABLE_LINKER__TicTacToe_Debug CMakeFiles/TicTacToe.dir/src/main.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/winLogic.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/mapping.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/touchLogic.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/dataInput.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/archive.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/loadGame.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen/inBangXepHang.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/drawScreen/inCaiDat.cpp.obj CMakeFiles/TicTacToe.dir/src/lib/MiniMax.cpp.obj
   FLAGS = -g
   LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

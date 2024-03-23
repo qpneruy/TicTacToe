@@ -1,41 +1,40 @@
-#include "include/mapping.h"
-
 //
 // Created by huuti on 003, 03/02/2024.
 //
+#include "include/mapping.h"
 #include "include/touchLogic.h"
-#include <conio.h>
 #include <Windows.h>
 
 int x_, y_;
-
+HANDLE hStdin;
+DWORD fdwMode, eventRead;
+INPUT_RECORD Inrec;
 void getEvent(posData &data) {
-//    Pressed = false;
-    HANDLE hStdin;
-    DWORD fdwMode, eventRead;
-    INPUT_RECORD Inrec;
     hStdin = GetStdHandle(STD_INPUT_HANDLE);
     fdwMode = ENABLE_EXTENDED_FLAGS;
     SetConsoleMode(hStdin, fdwMode);
     fdwMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT;
     SetConsoleMode(hStdin, fdwMode);
-//    while (!Pressed) {
-        PeekConsoleInput(hStdin, &Inrec, 1, &eventRead);
-        ReadConsoleInput(hStdin, &Inrec, 1, &eventRead);
-        x_ = Inrec.Event.MouseEvent.dwMousePosition.X;
-        y_ = Inrec.Event.MouseEvent.dwMousePosition.Y;
-        switch (Inrec.EventType) {
-            case MOUSE_EVENT: {
-                if (Inrec.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED) {
-                    data.playerPosX = x_;
-                    data.playerPosY = y_;
-//                    std::cout << " " << x_ << "  " << y_;
-//                    Pressed = true;
-                }
-                break;
+
+    PeekConsoleInput(hStdin, &Inrec, 1, &eventRead);
+    ReadConsoleInput(hStdin, &Inrec, 1, &eventRead);
+    x_ = Inrec.Event.MouseEvent.dwMousePosition.X;
+    y_ = Inrec.Event.MouseEvent.dwMousePosition.Y;
+    switch (Inrec.EventType) {
+        case MOUSE_EVENT: {
+            if (Inrec.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED) {
+                data.playerPosX = x_;
+                data.playerPosY = y_;
             }
-//        }
-//        return;
+            break;
+        }
+        case KEY_EVENT: {
+            if (Inrec.Event.KeyEvent.uChar.AsciiChar == 27) {
+                data.playerPosX = -2;
+                data.playerPosY = -2;
+                return;
+            }
+        }
     }
 }
 
@@ -50,31 +49,41 @@ int searchNearestPos(const int mapTable[9], int x, int n) {
     return -1;
 }
 
-void dacPos(const gameData& gdata, int &o_x, int &o_y) {
+void dacPos(const gameData& gData, int &o_x, int &o_y) {
     bool found_1 = false, found_2 = false;
-    if (gdata.drData.x + (gdata.drData.width * 4 / 2)+1 == gdata.poData.playerPosX || gdata.drData.x + (gdata.drData.width * 4 / 2)+2 == gdata.poData.playerPosX  ) {
+    if (gData.poData.playerPosX == 0 && gData.poData.playerPosY == 0){
+        o_x = -2;
+        o_y = -1;
+        return;
+    }
+    if (gData.poData.playerPosX == -2 && gData.poData.playerPosY == -2) {
+        o_x = -1;
+        o_y = -1;
+        return;
+    }
+    if (gData.drData.x + (gData.drData.width * 4 / 2) + 1 == gData.poData.playerPosX || gData.drData.x + (gData.drData.width * 4 / 2) + 2 == gData.poData.playerPosX  ) {
         o_x = -1;
         o_y = -1;
         found_1 = true;
         found_2 = true;
     }
-    if (gdata.poData.playerPosX == gdata.poData.tableHor[0] - 1) {
+    if (gData.poData.playerPosX == gData.poData.tableHor[0] - 1) {
         o_x = 0;
         found_1 = true;
         found_2 = true;
     }
     if (!found_1) {
-        for (int i = 0; i <= gdata.drData.width; i++) {
-            if (gdata.poData.tableHor[i] == gdata.poData.playerPosX) {
+        for (int i = 0; i <= gData.drData.width; i++) {
+            if (gData.poData.tableHor[i] == gData.poData.playerPosX) {
                 o_x = i;
                 found_2 = true;
             }
         }
     }
-    if (!found_2) o_x = searchNearestPos(gdata.poData.tableHor, gdata.poData.playerPosX, gdata.drData.width);
+    if (!found_2) o_x = searchNearestPos(gData.poData.tableHor, gData.poData.playerPosX, gData.drData.width);
     if (o_x != -1) {
-        for (int i = 0; i < gdata.drData.height; i++) {
-            if (gdata.poData.tableVer[i] == gdata.poData.playerPosY) {
+        for (int i = 0; i < gData.drData.height; i++) {
+            if (gData.poData.tableVer[i] == gData.poData.playerPosY) {
                 o_y = i;
                 return;
             }

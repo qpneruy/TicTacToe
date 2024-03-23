@@ -10,7 +10,7 @@
 
 void getEvent(posData &data);
 
-void dacPos(const gameData& gdata, int &o_x, int &o_y);
+void dacPos(const gameData& gData, int &o_x, int &o_y);
 
 bool SyntaxCheck(std::string table[100][100], int y, int x);
 

@@ -25,7 +25,7 @@ void inBangDiem(drawData data, int Oscore, int Xscore);
 
 void SetWindowSize(short width, short height);
 
-void inBangThoiGian(drawData drData, int XTime, int OTime);
+void inBangThongBao(drawData drData);
 
 
 void inThongBao();
@@ -44,7 +44,7 @@ int getASCIINumber();
 void clearScreen();
 
 void inBackGround(drawData Data);
-void inManHinh(drawData drData);
+void inManHinh();
 void inLogo();
 void esc();
 #endif //TICTACTOEV2_DRAWSCREEN_H
