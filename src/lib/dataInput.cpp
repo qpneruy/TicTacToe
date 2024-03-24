@@ -142,3 +142,33 @@ void UserInput(drawData &drData) {
     }
     clearScreen();
 }
+
+std::string userNameInput() {
+    int count = 0;
+    int ch;
+    std::string name;
+    gotoXY(37, 15);
+    std::cout << "_ _ _ _ _ _";
+    gotoXY(37, 15);
+    while (count < 6) {
+        if (kbhit()) {
+            ch = getch();
+            if (ch == 13) {
+                if (!name.empty()) {
+                    return name;
+                } else {
+                    gotoXY(27, 16);
+                    std::cout << "Vui Long Nhap Ten!";
+                    Sleep(200);
+                    gotoXY(27, 16);
+                    std::cout << "                   ";
+                }
+            }
+            count++;
+            std::cout << char(ch);
+            name += char(ch);
+            gotoXY(count * 2 + 37, 15);
+        }
+    }
+    return name;
+}

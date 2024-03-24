@@ -4,9 +4,9 @@
 #include <iostream>
 
 TableData tableData;
-bool crossCheck(int intWin, std::string table[100][100], drawData drawData, std::string Player) {
+
+bool crossCheck(int intWin, std::string table[100][100], drawData drawData, const std::string &Player) {
     int RcrossCount, LcrossCount;
-    int n = drawData.intWin;
     for (int i = 0; i < drawData.height; i++) {
         for (int j = 0; j < drawData.width; j++) {
             RcrossCount = 0;
@@ -56,7 +56,8 @@ bool drawC(std::string table[100][100], drawData drData) {
     }
     return false;
 }
-char HorVerCheck(int intWin, std::string table[100][100], drawData drawData, std::string Player) {
+
+char HorVerCheck(int intWin, std::string table[100][100], drawData drawData, const std::string &Player) {
     int HorCount, VerCount;
     for (int i = 0; i < drawData.height; i++) {
         HorCount = 0;
@@ -88,7 +89,7 @@ char HorVerCheck(int intWin, std::string table[100][100], drawData drawData, std
 }
 
 bool isWin(std::string table[100][100], drawData drData, const std::string& Player) {
-    char OresHV = HorVerCheck(drData.intWin, table, drData, Player);;
+    char OresHV = HorVerCheck(drData.intWin, table, drData, Player);
     if (OresHV != -1) {
         if (OresHV == 1) {
             for (int i = 1; i <= drData.intWin; i++) {

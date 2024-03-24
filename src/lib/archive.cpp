@@ -70,12 +70,8 @@ void init_file() {
     },
     "leaderBoard": [
         "None"
-    ],
-    "setting": {
-        "music": true
-    }
-}
-)"_json;
+    ]
+  })"_json;
     f << ex2.dump(4);
     f.close();
 }
@@ -105,7 +101,6 @@ void save(const gameData &Data) {
             if (count + 1 == 11) break;
         }
     } else { data["leaderBoard"].push_back("None"); }
-    data["setting"]["music"] = true;
     std::string path = std::filesystem::current_path().string();
     std::ofstream file(path + R"(\data.json)");
     file << data.dump(4);
@@ -138,6 +133,5 @@ gameData load() {
         for (auto player: data["leaderBoard"])
             Data.player.add_player(player["name"], player["score"]);
     }
-    Data.Music = data["setting"]["music"];
     return Data;
 }

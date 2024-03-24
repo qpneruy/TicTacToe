@@ -156,8 +156,8 @@ std::string MainMenu[] = {"╿           ╿   \n",
                           "║           ║\n",
                           "║ Choi Moi  ║\n",
                           "║           ║\n",
-                          "║ Cai Dat   ║\n",
-                          "║           ║\n",
+//                          "║ Cai Dat   ║\n",
+//                          "║           ║\n",
                           "║ Xep Hang  ║\n",
                           "║           ║\n",
                           "║ Tac Gia   ║\n",
@@ -191,7 +191,7 @@ void inBackGround(drawData Data) {
                  " |   |       |/   \\|    |  |                      | |  |   |  |    ||      |  . \n";
 }
 void inMenuChinh(drawData Data) {
-    for (int i = 0; i <= 15; i++) {
+    for (int i = 0; i <= 13; i++) {
         gotoXY(Data.x - 8, Data.y + i - 1);
         std::cout << MainMenu[i];
     }
@@ -200,7 +200,8 @@ void inManHinh() {
     inLogo();
     inKhung(78, 34);
 }
-std::string MainMenuStr[] = {"Tiep Tuc", "Choi Moi", "Cai Dat", "Xep Hang", "Tac Gia", ""};
+
+std::string MainMenuStr[] = {"Tiep Tuc", "Choi Moi", "Xep Hang", "Tac Gia", ""};
 
 int menuHandle(drawData Data, int selected) {
     int ch;
@@ -222,8 +223,8 @@ int menuHandle(drawData Data, int selected) {
                     gotoXY(Data.x - 7, pointY + 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index + 1] << "  ";
-                    index = 4;
-                    pointY = Data.y + 13;
+                    index = 3;
+                    pointY = Data.y + 11;
                 }
                 gotoXY(Data.x - 7, pointY + 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -237,7 +238,7 @@ int menuHandle(drawData Data, int selected) {
             if (ch == KEY_DOWN) {
                 pointY += 2;
                 ++index;
-                if (index > 4) {
+                if (index > 3) {
                     gotoXY(Data.x - 7, pointY - 2);
                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     std::cout << " " << MainMenuStr[index - 1] << "  ";
@@ -260,7 +261,7 @@ int menuHandle(drawData Data, int selected) {
             if (ch == KEY_ENTER) {
                 gotoXY(Data.x - 7, Data.y + 5 + index * 2);
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                if (index != 4) std::cout << "                         ";
+                if (index != 3) std::cout << "                         ";
                 return index;
             }
         }

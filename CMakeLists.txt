@@ -26,6 +26,5 @@ add_executable(TicTacToe
         src/lib/drawScreen/inCaiDat.cpp
         src/include/drawScreen/inCaiDat.h
         src/include/drawScreen/inCaiDat.h
-        src/lib/MiniMax.cpp
-        src/include/MiniMax.h
+        src/app.o
 )

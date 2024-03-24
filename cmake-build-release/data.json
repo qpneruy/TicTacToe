@@ -1,0 +1,33 @@
+{
+    "board": {
+        "OTurn": false,
+        "Oscore": 0,
+        "XTurn": false,
+        "Xscore": 0,
+        "grid": [
+            [
+                "",
+                "",
+                ""
+            ],
+            [
+                "",
+                "",
+                ""
+            ],
+            [
+                "",
+                "",
+                ""
+            ]
+        ],
+        "intWin": 3,
+        "size": [
+            3,
+            3
+        ]
+    },
+    "leaderBoard": [
+        "None"
+    ]
+}

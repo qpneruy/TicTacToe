@@ -5,8 +5,13 @@
 #include "include/loadGame.h"
 #include "include/winLogic.h"
 #include "include/touchLogic.h"
+#include "include/dataInput.h"
 void LoadGame(gameData &gData, bool isNewGame) {
+    gData.drData.x = 40;
+    gData.drData.y = 11;
     if (isNewGame) {
+        gData.O.score = 0;
+        gData.X.score = 0;
         for (int i = 0; i < gData.drData.height; ++i) {
             for (int j = 0; j < gData.drData.width; ++j) {
                 gData.table[i][j].clear();
@@ -16,7 +21,7 @@ void LoadGame(gameData &gData, bool isNewGame) {
     bool isNofication = false,
          playerWin = false,
          draw = false;
-    int px = -1, py = -1;
+    int  px = -1, py = -1;
     startMap(gData.drData, gData.poData); gotoXY(0, 0);
 
     inLogo(); inBackGround(gData.drData);
@@ -28,12 +33,9 @@ void LoadGame(gameData &gData, bool isNewGame) {
     while (true) {
         getEvent(gData.poData);
         if (gData.poData.playerPosX == -2 & gData.poData.playerPosY == -2) {
-            gData.poData.playerPosX = -1;
-            gData.poData.playerPosY = -1;
-            save(gData);
-            gData = {};
-            gData.drData.x = 40;
-            gData.drData.y = 11;
+            gData.poData.playerPosX = -1; gData.poData.playerPosY = -1;
+            save(gData); gData = {};
+            gData.drData.x = 40; gData.drData.y = 11;
             return;
         }
         dacPos(gData, px, py);
@@ -60,7 +62,7 @@ void LoadGame(gameData &gData, bool isNewGame) {
             inBanCo(gData.table, gData.drData);
             if (isWin(gData.table, gData.drData, currentPlayer)) {
                 inBanCo(gData.table, gData.drData);
-                gotoXY(5, 16);
+                gotoXY(7, 16);
                 std::cout <<  currentPlayer << " Thang!";
                 playerWin = true;
             }
@@ -82,6 +84,11 @@ void LoadGame(gameData &gData, bool isNewGame) {
             isNofication = true;
         }
         if (playerWin) {
+            for (int i = 0; i < gData.drData.height; ++i) {
+                for (int j = 0; j < gData.drData.width; ++j) {
+                    gData.table[i][j].clear();
+                }
+            }
             if (!draw) {
             if (currentPlayer == "X") gData.X.score++; else gData.O.score++; }
             switch (inMenuKetThuc()) {
@@ -90,11 +97,6 @@ void LoadGame(gameData &gData, bool isNewGame) {
                     gData.X.score = 0;
                     return;
                 case 1:
-                    for (int i = 0; i < gData.drData.height; ++i) {
-                        for (int j = 0; j < gData.drData.width; ++j) {
-                            gData.table[i][j].clear();
-                        }
-                    }
                     gData.poData.playerPosY = -100;
                     gData.poData.playerPosX = -100;
                     inBangDiem(gData.drData, gData.O.score, gData.X.score);
@@ -105,30 +107,21 @@ void LoadGame(gameData &gData, bool isNewGame) {
                     inBackGround(gData.drData);
                     inKhung(78, 34);
                     gotoXY(27, 15);
-                    std::cout << "Nhap Ten: ";
+                    std::cout << "Nhap Ten:";
                     gotoXY(27, 16);
                     std::cout << "Khong qua 6 Ky Tu!\n";
-                    gotoXY(26, 15);
-                    std::string st;
-                    while (true) {
-                        std::cin >> st;
-                        if (st.length() <= 6) break; else {
-                            std::cout << "Qua 6 Ky tu! Nhap lai.";
-                            Sleep(500);
-                            gotoXY(26, 17);
-                            std::cout << "                       ";
-                        }
-                    }
-                    gotoXY(37, 15);
-                    std::cout << st;
+                    std::string playerName = userNameInput();
                     gotoXY(26, 18);
-                    std::cout << "Da Cap Nhat Bang Xep Hang! ESC DE THOAT.";
+                    std::cout << "Da Cap Nhat Bang Xep Hang!";
+                    gotoXY(26, 19);
+                    std::cout << "      -ESC DE THOAT-";
                     if (gData.X.score > gData.O.score) {
-                        gData.player.add_player(st, gData.X.score);
+                        gData.player.add_player(playerName, gData.X.score);
                     } else {
-                        gData.player.add_player(st, gData.O.score);
+                        gData.player.add_player(playerName, gData.O.score);
                     }
                     esc();
+                    save(gData);
                     return;
 
             }

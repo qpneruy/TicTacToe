@@ -9,5 +9,6 @@
 
 void UserInput(drawData &drData);
 
+std::string userNameInput();
 
 #endif //TICTACTOEV2_DATAINPUT_H

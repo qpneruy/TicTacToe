@@ -27,7 +27,6 @@ struct gameData {
     Player X{}, O{};
     posData poData;
     leaderboard player;
-    bool Music = false;
 };
 
 void save(const gameData& Data);
